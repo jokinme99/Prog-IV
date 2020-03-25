@@ -14,9 +14,9 @@ typedef struct {
 	char contra[15];
 	int numTarjeta;
 	float saldo;
-}Cliente;
+}Usuario;
 
-Cliente nuevoCliente() // no sé si está bien!!
+Usuario nuevoCliente() // no sé si está bien!!
 
 
 #endif /* USUARIO_USUARIO_H_ */
