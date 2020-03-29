@@ -67,7 +67,7 @@ cuenta* login()
 		}
 
 		do{
-			fscanf(fichero, "%s %s %s %i", &correo, &usuario, &contraseña, &admin);
+			fscanf(fichero, "%s %s %s %i", &correo, &usuario, &contraseña, &admin);    		 	//Abrimos el fichero y leemos el contenido
 			if(contadores!=0){
 
 				strncpy(cuentaC[contadorCantCuenta].correo, correo,30);
