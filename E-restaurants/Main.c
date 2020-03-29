@@ -199,7 +199,7 @@ int main() {
 				printf("1.Hacer una reserva");
 				printf("2.Ver mi perfil");
 				printf("3.Añadir saldo");
-				switch (eleccion){		//la funcionalidad se añadira en c++
+				switch (eleccion){		//la funcionalidad se añadira en c++;
 				case 1:
 					printf("seleccione el restaurante donde quiera hacer la reserva");
 					scanf("%s", &restaurante);
