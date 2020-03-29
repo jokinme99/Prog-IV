@@ -48,6 +48,8 @@ void registro()
 			fclose(fichero);
 }
 
+
+cuenta*cuentaC;
 cuenta* login()
 {
 	FILE * fichero;
@@ -71,7 +73,7 @@ cuenta* login()
 				strncpy(cuentaC[contadorCantCuenta].correo, correo,30);
 				strncpy(cuentaC[contadorCantCuenta].usuario, usuario,30);
 				strncpy(cuentaC[contadorCantCuenta].contraseña, contraseña,30);
-				cuentaC[contadorCantUsu].admin=admin;
+				cuentaC[contadorCantCuenta].admin=admin;
 				contadorCantCuenta++;
 				contadores--;
 			}

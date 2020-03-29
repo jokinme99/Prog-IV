@@ -10,6 +10,7 @@
 
 typedef struct
 {
+	char correo[30];
 	char contraseña[30];
 	char usuario[30];
 	char contraseña[30];
