@@ -80,7 +80,7 @@ cuenta* login()
 		}while (feof(fichero) == 0);
 
 			fclose(fichero);
-			printf ("\n Se ha leido el fichero correctamente... \n");
+			printf ("\n Lectura de cuentas correcta \n");
 			return cuentaC;
 
 }

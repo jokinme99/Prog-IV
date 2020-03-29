@@ -16,11 +16,165 @@
 
 int main() {
 
+	 int eleccion;
+	 char usuarioAdmin[30];
+	 char contraseñaAdmin[30];
+
+	    do
+	    {
+	        printf("Bienvenido a e-restaurant, como desea acceder:\n\n");
+	        printf("1. Usuario\n");
+	        printf("2. Administrador\n");
+	        printf("3. Salir\n");
+	        scanf("%d",&eleccion);
+
+	        switch(eleccion)
+	        {
+	            case 1:	void usuario();
+	                break;
+	            case 2: void administrador();
+	                break;
+	            case 3: printf("Adios, pase un buen dia!\n");
+	                exit(0);
+	                break;
+	            default: printf("Elección incorrecta!\n");
+	                break;
+	        }
+
+	    } while (eleccion != 3||2||1);
+
+
+void usuario()
+{
+
+}
+
+void administrador()
+{
+	printf("Introduzca el usuario:");
+	scanf("%s",&usuarioAdmin);
+	if(&usuarioAdmin == "admin")
+	{
+
+		printf("Introduzca la contraseña:");
+		scanf("%s",&contraseñaAdmin);
+
+		if(&contraseñaAdmin == "admin")
+		{
+			printf("Cuenta correcta, adelante");
+			menu2();
+		}
+
+	}else
+	{
+	printf("Cuenta incorrecta, intentelo de nuevo");
+	void administrador;
+	}
+
+}
+
+void menu2(){
+
+	int eleccion;
+
+	do
+	{
+		printf("Que desea visualizar:\n");
+		printf("1.Restaurantes");
+		printf("2.Menus");
+		printf("3.Producto");
+
+		switch (eleccion) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			default: printf("Elección incorrecta\n");
+				menu2();
+		}
+	} while (eleccion != 3||2||1);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Restaurantes: Ver todos los restaurantes, ver restaurantes con mesas disponibles & restaurantes con un tipo de comida
 //Menus: Ver los menus de los restaurantes, menus con un precio mayor/menor que x & menus con x productos
 //Producto: Productos con un precio mayor/menor que x
 
-	int menu1; //,opciones, categoria,tipo;
+	/*int menu1; //,opciones, categoria,tipo;
 	char* usuario1;
 	char* contrasenya1;
 	char* contrasenyaAdmin;
@@ -78,8 +232,9 @@ int main() {
 		printf("Por favor elija una opción correcta\n");
 	}
 
-	return 0;
+	return 0;*/
 }
+
 
 
 
