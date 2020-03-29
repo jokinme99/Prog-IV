@@ -36,28 +36,29 @@ int main() {
 		printf("Inicio sesión de usuario\n");//Registro de usuarios
 		printf("Introducir usuario: ");
 		scanf("%s", usuario1);
+
 		if(usuario1 == "usuario1"){
-			printf("Introduzca su contrasenya:");
-			scanf("%s", &contrasenya1);
-			if(contrasenya1 != "clave1"){
-				printf("contrasenya incorrecta");
-			}else{
-				printf("------ Bienvenido/a a E-restaurants ------");
-				//Aquí se mete los restaurantes, reservas, menus, productos...
+					printf("Introduzca su contrasenya:");
+					scanf("%s", &contrasenya1);
+					if(contrasenya1 != "clave1"){
+						printf("contrasenya incorrecta");
+					}else{
+						printf("------ Bienvenido/a a E-restaurants ------");
+						//Aquí se mete los restaurantes, reservas, menus, productos...
+					}}
+					else if(usuario1 == "usuario2"){
+				printf("Introduzca su contrasenya: ");
+				scanf("%s", &contrasenya1);
+				if(contrasenya1 != "clave2"){
+					printf("contrasenya incorrecta");
+				}else{
+					printf("------ Bienvenido/a a E-restaurants ------");
+					//Aquí se mete los restaurantes, reservas, menus, productos...
+				}
 			}
-		}else if(usuario1 == "usuario2"){
-			printf("Introduzca su contrasenya: ");
-						scanf("%s", &contrasenya1);
-						if(contrasenya1 != "clave2"){
-							printf("contrasenya incorrecta");
-						}else{
-							printf("------ Bienvenido/a a E-restaurants ------");
-							//Aquí se mete los restaurantes, reservas, menus, productos...
-						}
-		}
-		else{
-			printf("Usuario incorrecto!!");
-		}
+			else{
+				printf("Usuario incorrecto!!");
+			}
 	}
 	if (menu1 == 2){
 		printf("Inicio sesión de administrador\n");
