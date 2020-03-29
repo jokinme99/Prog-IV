@@ -56,6 +56,7 @@ int main() {
 		if (menu >= 5) {
 			printf ("El numero introducido no corresponde a ninguna categoria \n");
 		}
+		//prueba
 
 
 	return 0;
