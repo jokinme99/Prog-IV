@@ -23,6 +23,9 @@ typedef struct{
 }Restaurante;
 
 void imprimirRestaurantes(Restaurante r);
+void eliminarRestaurantes(Restaurante r);
+void anyadirRestaurante(Restaurante r);
+void modificarRestaurante(Restaurante r);
 
 
 #endif /* RESTAURANTE_RESTAURANTE_H_ */

@@ -23,9 +23,8 @@ int main() {
 	    do
 	    {
 	        printf("Bienvenido a e-restaurant, como desea acceder:\n\n");
-	        printf("1. Usuario\n");
-	        printf("2. Administrador\n");
-	        printf("3. Salir\n");
+	        printf("1. Iniciar sesion\n");
+	        printf("2. Salir\n");
 	        scanf("%d",&eleccion);
 
 	        switch(eleccion)
