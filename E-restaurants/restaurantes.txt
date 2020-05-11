@@ -1,0 +1,5 @@
+Id:1, Nombre:Charli, Direccion: txanteltxu kalea 3, TipoComida: Carnivora, Menus: Durum(Carne, lechuga y tomate), Pedrata(Carne y patatas), numero de mesas: 15, Trabajadores: Jon, Lander y Ane
+Id:1, Nombre:Charli, Direccion: txanteltxu kalea 3, TipoComida: Carnivora, Menus: Durum(Carne, lechuga y tomate), Pedrata(Carne y patatas), numero de mesas: 15, Trabajadores: Jon, Lander y Ane
+Id:1, Nombre:Charli, Direccion: txanteltxu kalea 3, TipoComida: Carnivora, Menus: Durum(Carne, lechuga y tomate), Pedrata(Carne y patatas), numero de mesas: 15, Trabajadores: Jon, Lander y Ane
+Id:1, Nombre:Charli, Direccion: txanteltxu kalea 3, TipoComida: Carnivora, Menus: Durum(Carne, lechuga y tomate), Pedrata(Carne y patatas), numero de mesas: 15, Trabajadores: Jon, Lander y Ane
+Id:1, Nombre:Charli, Direccion: txanteltxu kalea 3, TipoComida: Carnivora, Menus: Durum(Carne, lechuga y tomate), Pedrata(Carne y patatas), numero de mesas: 15, Trabajadores: Jon, Lander y Ane
