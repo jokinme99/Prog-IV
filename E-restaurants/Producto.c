@@ -5,9 +5,7 @@
  *      Author: jokin
  */
 #include "Producto.h"
-
 #include <stdio.h>
-
 void imprimirProductos(Producto p1){
 	printf("Id = :%i \n Nombre = %s \n Descripcion = %s \n Precio = %f \n", p1.id, p1.nombre, p1.descripcion, p1.precio);
 }

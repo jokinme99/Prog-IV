@@ -22,6 +22,7 @@ class Restaurante
 	Trabajador* trabajadores;
 public:
 	Restaurante(char* nombre, char* direccion, char* tipoComida, int telefono, Menu* menus, int numMesas,Trabajador* trabajadores);//tambien para anyadirArticulo
+	Restaurante();
 	Restaurante(const Restaurante& r);
 	~Restaurante();//destructor
 

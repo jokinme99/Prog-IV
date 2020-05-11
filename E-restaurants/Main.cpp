@@ -26,6 +26,7 @@ int main(void)
 		int opcion,salir,opcionAdmin,opcionUsuario;
 		string usuario;
 		string contrasenya;
+		Restaurante restaurante;
 		cout<<"-----BIENVENIDO A E-RESTAURANTS-----"<<endl;
 		cout<<"1.Entrar como administrador"<<endl;
 		cout<<"2.Entrar como usuario"<<endl;
@@ -43,14 +44,27 @@ int main(void)
 				cout<<"1. Ver todos los restaurantes"<<endl;
 				cout<<"2. Modificar restaurantes"<<endl;
 				cout<<"3. Anyadir restaurante"<<endl;
-				cout<<"4.Eliminar restaurante"<<endl;
+				cout<<"4. Eliminar restaurante"<<endl;
+				cout<<"5. Cerrar Sesion"<<endl;
 				cin>>opcionAdmin;
 				switch(opcionAdmin){
 				case 1:
-					system("cls");
-					cout<<"opcion 1";
-					system("pause");
-					system("cls");
+					cout<<"VER RESTAURANTES"<<endl;
+					break;
+				case 2:
+					cout<<"MODIFICAR RESTAURANTES"<<endl;
+					break;
+				case 3:
+					cout<<"ANYADIR RESTAURANTES"<<endl;
+					break;
+				case 4:
+					cout<<"ELIMINAR RESTAURANTES"<<endl;
+					break;
+				case 5:
+					cout<<"Cerrando sesion..."<<endl;
+					return main();
+				default:
+					cout<<"Introduzca un valor correcto"<<endl;
 					break;
 				}
 			}else{

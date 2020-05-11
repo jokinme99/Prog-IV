@@ -27,6 +27,17 @@ Restaurante::Restaurante(char* nombre, char* direccion, char* tipoComida, int te
 	this->numMesas = numMesas;
 	this->trabajadores = trabajadores;
 }
+Restaurante::Restaurante(){
+	this->nombre = NULL;
+	this->direccion = NULL;
+	this->id = 0;
+	this->menus = NULL;
+	this->numMesas = 0;
+	this->telefono = 0;
+	this->tipoComida = NULL;
+	this->trabajadores = NULL;
+
+}
 Restaurante::Restaurante(const Restaurante& r){//Tambien sirve para anyadirRestaurantes
 	this->nombre = new char[strlen(r.nombre) +1];
 	strcpy(this->nombre, r.nombre);
