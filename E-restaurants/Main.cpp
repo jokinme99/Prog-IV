@@ -172,6 +172,10 @@ int main(void)
 		int con = 0;
 		string parte;
 
+		//parte de crear el usuario y login del usuario
+		string nombreUsuario;
+		string contraUsuario;
+		int opUsu;
 
 		string usuario;
 		string contrasenya;
@@ -495,18 +499,69 @@ int main(void)
 
 		}break;
 		case 2:{
-			cout<<"Introducir el usuario: ";
-			cin>>usuario;
-			cout<<"Introducir contrasenya: ";
-			cin>>contrasenya;
-			if(usuario == USUARIO && contrasenya == CONTRA){
-				cout<<"---MODO USUARIO---"<<endl;
+			cout<<"1. Registrar usuario"<<endl;
+			cout<<"2. Iniciar sesion como usuario"<<endl;
+			cin>>opUsu;
 
-			}else{
-				cout<<"Contrasenya y/o usuario incorrectos"<<endl;
+
+			switch(opUsu){
+				case 1:{
+					cout << "Ingresa el nombre del usuario: ";
+					cin >> nombreUsuario;
+					cout << endl;
+
+					cout << "Ingresa la contraseña del usuario: ";
+					cin >> contraUsuario;
+					cout << endl;
+
+
+					ofstream ofs("usuarios.txt", ios::app);
+
+					ofs << nombreUsuario << " " << contraUsuario << endl;
+
+					ofs.close();
+
+					cout << "Usuario creado correctamente" << endl;
+				} break;
+				case 2:{ //Accedemos al usuario
+
+					ifstream ifs;
+					ifs.open("usuarios.txt", ios::in);
+					string nom, con, nomAu, conAu;
+					bool en = false;
+					cout << "Ingrese el nombre del usuario: " << endl;
+					cin >> nomAu;
+					cout << "Ingrese la contra del usuario: "<<endl;
+					cin >> conAu;
+					ifs >> nom;
+						while (!ifs.eof() && !en) {
+							ifs>>con;
+							if(nom == nomAu && con == conAu){
+							cout<<"Usuario y contraseña correctos. Bienvenido " << nomAu <<endl;
+							/*cout<<"Nombre introducido: " <<nomAu<<endl; estas cuatro lineas son para compobar datos
+							cout<<"nombre del txt: " << nom<<endl; //nombre encontrado en el txt
+							cout<<"Contra introducida: "<<conAu<<endl;
+							cout<<"contra del txt: " <<con<<endl;  //contra encontrada en el txt*/
+							en = true;
+
+							//parte del usuario
+							cout<<"---MODO USUARIO---"<<endl;
+
+						}
+
+						if(nom == nomAu && con != conAu || nom != nomAu && con == conAu) {
+							cout<<"El usuario y/o la contraseña son incorrectos"<<endl;
+						}
+						ifs>>nom;
+					}
+					ifs.close();
+
+					if(!en){
+						cout<<"usuario NO encontrado"<<endl;
+					}
+				}
 			}
-
-		}break;
+					}break;
 		case 3:{
 			cout<< "Estas seguro?"<<endl;
 			cout<<"1.SI"<<endl;
