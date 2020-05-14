@@ -15,6 +15,4 @@ typedef struct{
 }Menu;
 
 void imprimirMenus(Menu m1);
-
-
 #endif /* MENU_MENU_H_ */

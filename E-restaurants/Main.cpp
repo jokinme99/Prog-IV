@@ -18,6 +18,15 @@
 #define USUARIO "usuario"
 #define CONTRA "usuario"
 using namespace std;
+void admin(){
+	cout<<"---MODO ADMINISTRADOR---"<<endl;
+	cout<<"1. Ver todos los restaurantes"<<endl;
+	cout<<"2. Modificar restaurantes"<<endl;
+	cout<<"3. Buscar restaurantes"<<endl;
+	cout<<"4. Anyadir restaurante"<<endl;
+	cout<<"5. Eliminar restaurante"<<endl;
+	cout<<"6. Cerrar sesion"<<endl;
+}
 int main(void)
 {
 
@@ -181,11 +190,11 @@ int main(void)
 			cin >> op;
 		switch(op){
 		case 1:{
-			cout << "Ingresa el nombre del admin\n";
+			cout << "Ingresa el nombre del admin: ";
 							cin >> nombreAdmin;
 							cout << endl;
 
-							cout << "Ingresa la contraseña del admin\n";
+							cout << "Ingresa la contraseña del admin: ";
 							cin >> contraAdmin;
 							cout << endl;
 
@@ -240,15 +249,9 @@ int main(void)
 								cout << "contra introduccido: " << contraAdmin << endl;
 								cout << "contra del txt: " << co << endl;*/
 
-								//menu del admin
-								cout<<"---MODO ADMINISTRADOR---"<<endl;
-								cout<<"1. Ver todos los restaurantes"<<endl;
-								cout<<"2. Buscar restaurante por id"<<endl;
-								cout<<"3. Modificar restaurantes"<<endl;
-								cout<<"4. Anyadir restaurante"<<endl;
-								cout<<"5. Eliminar restaurante"<<endl;
-								cout<<"6. Cerrar sesion"<<endl;
+								admin();
 								cin>>opcionAdmin;
+
 								switch(opcionAdmin){
 								case 1:{
 									cout<<"VER TODOS LOS RESTAURANTES"<<endl;
@@ -258,44 +261,165 @@ int main(void)
 									r4.imprimir();
 									r5.imprimir();
 									r6.imprimir();
+									admin();
 								} break;
 								case 2:{
-									cout<<"BUSCAR RESTAURANTES";
-									string nombre;
-									int idTrabajador,idProducto,idRestaurante,numMenu,numMesas;
-									string dni,nombreTrabajador,nombreProducto,nombreRestaurante,descripcionMenu,tipoComida,descripcionRestaurante;
-									Menu* menuRestaurante = menuRestaurante[3];
-									Producto* productoMenu = productoMenu[3];
-									Trabajador* trabajadorRestaurante = trabajadorRestaurante[3];
+									cout<<"MODIFICAR RESTAURANTES"<<endl;
+									char* nombre;
+									int idTrabajador;int idProducto;
+									int numMenu;int numMesas;int telefono;int sueldo;
+									char* dni;char* nombreTrabajador;char* nombreProducto; char*nombreRestaurante; char*descripcionMenu;char* tipoComida;
+									char* descripcionRestaurante;char* direccionRestaurante;char* descripcionProducto;
+									float precioProducto; float precioMenu;
+									Trabajador t;
+									Producto p;
+									Menu m;
+									Menu* menuRestaurante = new Menu[3];
+									Producto* productoMenu = new Producto[3];
+									Trabajador* trabajadorRestaurante = new Trabajador[3];
 									cout<<"Introduzca el nombre de un restaurante:";
 									cin>>nombre;
 									if(r1.getNombre() == nombre){
-
+											cout<<"Id: "<<r1.getId()<<", nombre del restaurante: "; cin>> nombreRestaurante; r1.setNombre(nombreRestaurante);
+											cout<<", direccion: "; cin>> direccionRestaurante; r1.setDireccion(direccionRestaurante);
+											cout<<", tipo de comida: "; cin>> tipoComida;r1.setTipoComida(tipoComida);
+											cout<<", telefono: "; cin>> telefono; r1.setTelefono(telefono);
+											r1.setMenus(menuRestaurante);
+											menuRestaurante[0] = m;
+											m.productos=productoMenu;
+											productoMenu[0] = p;
+											r1.setTrabajadores(trabajadorRestaurante);
+											trabajadorRestaurante[0] = t;
+											cout<<", menus[ Numero menu: ";cin>>numMenu;m.numMenu=numMenu;
+											cout<<", Productos[ Id: "; cin>>idProducto;p.id=idProducto;cout<<", nombre: ";cin>>nombreProducto;p.nombre=nombreProducto;
+											cout<<", descripcion: "; cin>>descripcionProducto;p.descripcion=descripcionProducto;
+											cout<<", precio: "; cin>>precioProducto;p.precio=precioProducto;
+											cout<<" ], precio menu: ";cin>>precioMenu;m.precio=precioMenu;
+											cout<<", numero de mesas: "; cin>>numMesas;r1.setNumMesas(numMesas);
+											cout<<", trabajadores[ Id: ";cin>>idTrabajador;t.id=idTrabajador;cout<<", nombre: ";cin>>nombreTrabajador;t.nombre=nombreTrabajador;
+											cout<<", dni: ";cin>>dni;t.dni=dni;cout<<", sueldo: ";cin>>sueldo;t.sueldo=sueldo;cout<<"] "<<endl;
+											r1.imprimir();
 									}else if (r2.getNombre() == nombre){
+										cout<<"Id: "<<r2.getId()<<", nombre del restaurante: "; cin>> nombreRestaurante; r2.setNombre(nombreRestaurante);
+										cout<<", direccion: "; cin>> direccionRestaurante; r2.setDireccion(direccionRestaurante);
+										cout<<", tipo de comida: "; cin>> tipoComida;r2.setTipoComida(tipoComida);
+										cout<<", telefono: "; cin>> telefono; r2.setTelefono(telefono);
+										r2.setMenus(menuRestaurante);
+										menuRestaurante[0] = m;
+										m.productos=productoMenu;
+										productoMenu[0] = p;
+										r2.setTrabajadores(trabajadorRestaurante);
+										trabajadorRestaurante[0] = t;
+										cout<<", menus[ Numero menu: ";cin>>numMenu;m.numMenu=numMenu;
+										cout<<", Productos[ Id: "; cin>>idProducto;p.id=idProducto;cout<<", nombre: ";cin>>nombreProducto;p.nombre=nombreProducto;
+										cout<<", descripcion: "; cin>>descripcionProducto;p.descripcion=descripcionProducto;
+										cout<<", precio: "; cin>>precioProducto;p.precio=precioProducto;
+										cout<<" ], precio menu: ";cin>>precioMenu;m.precio=precioMenu;
+										cout<<", numero de mesas: "; cin>>numMesas;r2.setNumMesas(numMesas);
+										cout<<", trabajadores[ Id: ";cin>>idTrabajador;t.id=idTrabajador;cout<<", nombre: ";cin>>nombreTrabajador;t.nombre=nombreTrabajador;
+										cout<<", dni: ";cin>>dni;t.dni=dni;cout<<", sueldo: ";cin>>sueldo;t.sueldo=sueldo;cout<<"] "<<endl;
 										r2.imprimir();
 									}else if(r3.getNombre() == nombre){
+										cout<<"Id: "<<r3.getId()<<", nombre del restaurante: "; cin>> nombreRestaurante; r3.setNombre(nombreRestaurante);
+										cout<<", direccion: "; cin>> direccionRestaurante; r3.setDireccion(direccionRestaurante);
+										cout<<", tipo de comida: "; cin>> tipoComida;r3.setTipoComida(tipoComida);
+										cout<<", telefono: "; cin>> telefono; r3.setTelefono(telefono);
+										r3.setMenus(menuRestaurante);
+										menuRestaurante[0] = m;
+										m.productos=productoMenu;
+										productoMenu[0] = p;
+										r3.setTrabajadores(trabajadorRestaurante);
+										trabajadorRestaurante[0] = t;
+										cout<<", menus[ Numero menu: ";cin>>numMenu;m.numMenu=numMenu;
+										cout<<", Productos[ Id: "; cin>>idProducto;p.id=idProducto;cout<<", nombre: ";cin>>nombreProducto;p.nombre=nombreProducto;
+										cout<<", descripcion: "; cin>>descripcionProducto;p.descripcion=descripcionProducto;
+										cout<<", precio: "; cin>>precioProducto;p.precio=precioProducto;
+										cout<<" ], precio menu: ";cin>>precioMenu;m.precio=precioMenu;
+										cout<<", numero de mesas: "; cin>>numMesas;r3.setNumMesas(numMesas);
+										cout<<", trabajadores[ Id: ";cin>>idTrabajador;t.id=idTrabajador;cout<<", nombre: ";cin>>nombreTrabajador;t.nombre=nombreTrabajador;
+										cout<<", dni: ";cin>>dni;t.dni=dni;cout<<", sueldo: ";cin>>sueldo;t.sueldo=sueldo;cout<<"] "<<endl;
 										r3.imprimir();
+
 									}else if (r4.getNombre() == nombre){
+										cout<<"Id: "<<r4.getId()<<", nombre del restaurante: "; cin>> nombreRestaurante; r4.setNombre(nombreRestaurante);
+										cout<<", direccion: "; cin>> direccionRestaurante; r4.setDireccion(direccionRestaurante);
+										cout<<", tipo de comida: "; cin>> tipoComida;r4.setTipoComida(tipoComida);
+										cout<<", telefono: "; cin>> telefono; r4.setTelefono(telefono);
+										r4.setMenus(menuRestaurante);
+										menuRestaurante[0] = m;
+										m.productos=productoMenu;
+										productoMenu[0] = p;
+										r4.setTrabajadores(trabajadorRestaurante);
+										trabajadorRestaurante[0] = t;
+										cout<<", menus[ Numero menu: ";cin>>numMenu;m.numMenu=numMenu;
+										cout<<", Productos[ Id: "; cin>>idProducto;p.id=idProducto;cout<<", nombre: ";cin>>nombreProducto;p.nombre=nombreProducto;
+										cout<<", descripcion: "; cin>>descripcionProducto;p.descripcion=descripcionProducto;
+										cout<<", precio: "; cin>>precioProducto;p.precio=precioProducto;
+										cout<<" ], precio menu: ";cin>>precioMenu;m.precio=precioMenu;
+										cout<<", numero de mesas: "; cin>>numMesas;r4.setNumMesas(numMesas);
+										cout<<", trabajadores[ Id: ";cin>>idTrabajador;t.id=idTrabajador;cout<<", nombre: ";cin>>nombreTrabajador;t.nombre=nombreTrabajador;
+										cout<<", dni: ";cin>>dni;t.dni=dni;cout<<", sueldo: ";cin>>sueldo;t.sueldo=sueldo;cout<<"] "<<endl;
 										r4.imprimir();
+
 									}else if(r5.getNombre() == nombre){
+										cout<<"Id: "<<r5.getId()<<", nombre del restaurante: "; cin>> nombreRestaurante; r5.setNombre(nombreRestaurante);
+										cout<<", direccion: "; cin>> direccionRestaurante; r5.setDireccion(direccionRestaurante);
+										cout<<", tipo de comida: "; cin>> tipoComida;r5.setTipoComida(tipoComida);
+										cout<<", telefono: "; cin>> telefono; r5.setTelefono(telefono);
+										r5.setMenus(menuRestaurante);
+										menuRestaurante[0] = m;
+										m.productos=productoMenu;
+										productoMenu[0] = p;
+										r5.setTrabajadores(trabajadorRestaurante);
+										trabajadorRestaurante[0] = t;
+										cout<<", menus[ Numero menu: ";cin>>numMenu;m.numMenu=numMenu;
+										cout<<", Productos[ Id: "; cin>>idProducto;p.id=idProducto;cout<<", nombre: ";cin>>nombreProducto;p.nombre=nombreProducto;
+										cout<<", descripcion: "; cin>>descripcionProducto;p.descripcion=descripcionProducto;
+										cout<<", precio: "; cin>>precioProducto;p.precio=precioProducto;
+										cout<<" ], precio menu: ";cin>>precioMenu;m.precio=precioMenu;
+										cout<<", numero de mesas: "; cin>>numMesas;r5.setNumMesas(numMesas);
+										cout<<", trabajadores[ Id: ";cin>>idTrabajador;t.id=idTrabajador;cout<<", nombre: ";cin>>nombreTrabajador;t.nombre=nombreTrabajador;
+										cout<<", dni: ";cin>>dni;t.dni=dni;cout<<", sueldo: ";cin>>sueldo;t.sueldo=sueldo;cout<<"] "<<endl;
 										r5.imprimir();
+
 									}else if (r6.getNombre() == nombre){
+										cout<<"Id: "<<r6.getId()<<", nombre del restaurante: "; cin>> nombreRestaurante; r6.setNombre(nombreRestaurante);
+										cout<<", direccion: "; cin>> direccionRestaurante; r6.setDireccion(direccionRestaurante);
+										cout<<", tipo de comida: "; cin>> tipoComida;r6.setTipoComida(tipoComida);
+										cout<<", telefono: "; cin>> telefono; r6.setTelefono(telefono);
+										r6.setMenus(menuRestaurante);
+										menuRestaurante[0] = m;
+										m.productos=productoMenu;
+										productoMenu[0] = p;
+										r6.setTrabajadores(trabajadorRestaurante);
+										trabajadorRestaurante[0] = t;
+										cout<<", menus[ Numero menu: ";cin>>numMenu;m.numMenu=numMenu;
+										cout<<", Productos[ Id: "; cin>>idProducto;p.id=idProducto;cout<<", nombre: ";cin>>nombreProducto;p.nombre=nombreProducto;
+										cout<<", descripcion: "; cin>>descripcionProducto;p.descripcion=descripcionProducto;
+										cout<<", precio: "; cin>>precioProducto;p.precio=precioProducto;
+										cout<<" ], precio menu: ";cin>>precioMenu;m.precio=precioMenu;
+										cout<<", numero de mesas: "; cin>>numMesas;r6.setNumMesas(numMesas);
+										cout<<", trabajadores[ Id: ";cin>>idTrabajador;t.id=idTrabajador;cout<<", nombre: ";cin>>nombreTrabajador;t.nombre=nombreTrabajador;
+										cout<<", dni: ";cin>>dni;t.dni=dni;cout<<", sueldo: ";cin>>sueldo;t.sueldo=sueldo;cout<<"] "<<endl;
 										r6.imprimir();
+
 									}else{
 										cout<<"No existe ningun restaurante con ese nombre";
+
 									}
 
 								}break;
 								case 3:{
-									cout<<"MODIFICAR RESTAURANTES";
-									string nombre;
+									cout<<"BUSCAR RESTAURANTE";//Todo:HACER FUNCIONAL
+									char* nombre;
 									cout<<"Introduzca el nombre de un restaurante:";
 									cin>>nombre;
 									if(r1.getNombre() == nombre){
-
 										r1.imprimir();
+
 									}else if (r2.getNombre() == nombre){
 										r2.imprimir();
+
 									}else if(r3.getNombre() == nombre){
 										r3.imprimir();
 									}else if (r4.getNombre() == nombre){
@@ -309,9 +433,38 @@ int main(void)
 									}
 								}break;
 								case 4:{
-									system("cls");
-									cout<<"anyadir"<<endl;
-									system("cls");
+									cout<<"ANYADIR RESTAURANTE";
+									char* nombre;
+									int idTrabajador;int idProducto;
+									int numMenu;int numMesas;int telefono;int sueldo;
+									char* dni;char* nombreTrabajador;char* nombreProducto; char*nombreRestaurante; char*descripcionMenu;char* tipoComida;
+									char* descripcionRestaurante;char* direccionRestaurante;char* descripcionProducto;
+									float precioProducto; float precioMenu;
+									Trabajador t;
+									Producto p;
+									Menu m;
+									Menu* menuRestaurante = new Menu[1];
+									menuRestaurante[0] = m;
+									Producto* productoMenu = new Producto[1];
+									productoMenu[0] = p;
+									Trabajador* trabajadorRestaurante = new Trabajador[1];
+									trabajadorRestaurante[0] = t;
+									cin>>nombre;
+									if(r1.getNombre() == nombre){
+										cout<<"Ya existe un restaurante con ese nombre";
+									}else if (r2.getNombre() == nombre){
+										cout<<"Ya existe un restaurante con ese nombre";
+									}else if(r3.getNombre() == nombre){
+										cout<<"Ya existe un restaurante con ese nombre";
+									}else if (r4.getNombre() == nombre){
+										cout<<"Ya existe un restaurante con ese nombre";
+									}else if(r5.getNombre() == nombre){
+										cout<<"Ya existe un restaurante con ese nombre";
+									}else if (r6.getNombre() == nombre){
+										cout<<"Ya existe un restaurante con ese nombre";
+									}else{
+
+									}
 								}break;
 								case 5:{
 									system("cls");
