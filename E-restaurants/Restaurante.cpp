@@ -103,12 +103,14 @@ void Restaurante::setTrabajadores(Trabajador* trabajadores){
 	this->trabajadores = trabajadores;
 }
 void Restaurante::imprimir(){
-	cout<<"Id: "<<this->id<<endl;
-	cout<<"Nombre: "<<this->nombre<<endl;
-	cout<<"Direccion: "<<this->direccion<<endl;
-	cout<<"Tipo de comida: "<<this->tipoComida<<endl;
-	cout<<"Telefono: "<<this->telefono<<endl;
-	cout<<"Menus: "<<this->menus<<endl;
-	cout<<"Numero de mesas: "<<this->numMesas<<endl;
-	cout<<"Trabajadores: "<<this->trabajadores<<endl;
+	cout<<"Id: "<<this->id;
+	cout<<", nombre: "<<this->nombre;
+	cout<<", direccion: "<<this->direccion;
+	cout<<", tipo de comida: "<<this->tipoComida;
+	cout<<", telefono: "<<this->telefono;
+	cout<<", menus[ Numero menu: "<<this->menus->numMenu<<", Productos[ Id: "<<this->menus->productos->id<<", nombre: "<<this->menus->productos->nombre<<", descripcion: "<<
+			this->menus->productos->descripcion<<", precio: "<<this->menus->productos->precio<< "euros ], precio menu:"<<this->menus->precio;
+	cout<<" euros, numero de mesas: "<<this->numMesas;
+	cout<<", trabajadores[ Id: "<<this->trabajadores->id<<", nombre: "<<this->trabajadores->nombre<<", dni: "<<this->trabajadores->dni<<", sueldo: "
+			<<this->trabajadores->sueldo<<" euros/mes ]"<<endl;
 }

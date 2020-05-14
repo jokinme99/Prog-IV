@@ -1,5 +1,1 @@
-Id:1, Nombre:Charli, Direccion: txanteltxu kalea 3, TipoComida: Carnivora, Menus: Durum(Carne, lechuga y tomate), Pedrata(Carne y patatas), numero de mesas: 15, Trabajadores: Jon, Lander y Ane
-Id:1, Nombre:Charli, Direccion: txanteltxu kalea 3, TipoComida: Carnivora, Menus: Durum(Carne, lechuga y tomate), Pedrata(Carne y patatas), numero de mesas: 15, Trabajadores: Jon, Lander y Ane
-Id:1, Nombre:Charli, Direccion: txanteltxu kalea 3, TipoComida: Carnivora, Menus: Durum(Carne, lechuga y tomate), Pedrata(Carne y patatas), numero de mesas: 15, Trabajadores: Jon, Lander y Ane
-Id:1, Nombre:Charli, Direccion: txanteltxu kalea 3, TipoComida: Carnivora, Menus: Durum(Carne, lechuga y tomate), Pedrata(Carne y patatas), numero de mesas: 15, Trabajadores: Jon, Lander y Ane
-Id:1, Nombre:Charli, Direccion: txanteltxu kalea 3, TipoComida: Carnivora, Menus: Durum(Carne, lechuga y tomate), Pedrata(Carne y patatas), numero de mesas: 15, Trabajadores: Jon, Lander y Ane
+r1.id = 0; r1.nombre = "Taberna de Santi";r1.tipoComida = "Casera"; r1.direccion = "Cristobal Colon kalea 1"; r1.menus = menuRestaurante1;r1.telefono=687941203;r1.numMesas=15;r1.trabajadores=trabajadorRestaurante1;

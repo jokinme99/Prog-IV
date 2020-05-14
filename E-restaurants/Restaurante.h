@@ -12,6 +12,7 @@
 #include "Producto.h"
 class Restaurante
 {
+public:
 	static int id;//id del restaurante
 	char* nombre;//nombre del restaurante
 	char* direccion;
@@ -20,8 +21,8 @@ class Restaurante
 	Menu* menus;
 	int numMesas;//mesas disponibles
 	Trabajador* trabajadores;
-public:
-	Restaurante(char* nombre, char* direccion, char* tipoComida, int telefono, Menu* menus, int numMesas,Trabajador* trabajadores);//tambien para anyadirArticulo
+
+	Restaurante(char* nombre,char* direccion, char* tipoComida, int telefono, Menu* menus, int numMesas,Trabajador* trabajadores);//tambien para anyadirArticulo
 	Restaurante();
 	Restaurante(const Restaurante& r);
 	~Restaurante();//destructor
