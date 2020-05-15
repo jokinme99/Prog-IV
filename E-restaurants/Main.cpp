@@ -129,20 +129,22 @@ int main(void)
 								switch(opcionAdmin){
 								case 1:{
 									cout<<"VER TODOS LOS RESTAURANTES"<<endl;
-
+									//LLamar a BD
 								} break;
 								case 2:{
 
 								}break;
 								case 3:{
 									cout<<"BUSCAR RESTAURANTE";//Todo:HACER FUNCIONAL
-
+									//LLamar a BD
 								}break;
 								case 4:{
+									//LLamar a BD
 								}break;
 								case 5:{
 									system("cls");
 									cout<<"eliminar"<<endl;
+									//LLamar a BD
 									system("cls");
 								}break;
 								case 6:{

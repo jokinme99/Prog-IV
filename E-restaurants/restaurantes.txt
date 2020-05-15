@@ -1,1 +1,0 @@
-r1.id = 0; r1.nombre = "Taberna de Santi";r1.tipoComida = "Casera"; r1.direccion = "Cristobal Colon kalea 1"; r1.menus = menuRestaurante1;r1.telefono=687941203;r1.numMesas=15;r1.trabajadores=trabajadorRestaurante1;
