@@ -25,7 +25,6 @@ int salir,opcionAdmin,opcionUsuario,op;
 string nombreAdmin;string contraAdmin;string linea;string no;string co;string parte;
 string nombreUsuario;string contraUsuario;
 int con = 0;int opUsu;int opcionAdminMenu1;
-string busquedaRestaurante;
 string nom, com, nomAu, conAu;
 int opcionClienteMenu;
 void adminMenu();void inicio();void adminMenu1();void adminMenu2();void adminMenu3();void adminMenu4();void adminMenu5();void adminMenu6();void admin(); void adminCaso1();void adminCaso2();
@@ -190,27 +189,134 @@ do{
 	}
 }
 void adminMenu2(){
-	cout<<"BUSCAR LOS RESTAURANTES"<<endl;
-		//con select pero poniendole especificaciones, es decir que se tenga que meter el nombre
-		//ejemplo: haz un string nombre; si en la base de datos hay un restauramte con ese nombre lo sacas y lo mismo con los trabajadores y los porductos
-		//haces un menu como en adminMenu1() pero le pones solo 4 ocpiones buscar restaurantes, productos o trabajadores y un boton de atras.
-		//para volver atras tienes que poner el metodo del menu anterior, en este caso seria adminMenu()
+	char* busquedaRestaurante;
+	rc = sqlite3_open("e-restaurants.db", &db);
 
+		cout<<"BUSCAR LOS RESTAURANTES"<<endl;
+			//con select pero poniendole especificaciones, es decir que se tenga que meter el nombre
+			//ejemplo: haz un string nombre; si en la base de datos hay un restauramte con ese nombre lo sacas y lo mismo con los trabajadores y los porductos
+			//haces un menu como en adminMenu1() pero le pones solo 4 ocpiones buscar restaurantes, productos o trabajadores y un boton de atras.
+			//para volver atras tienes que poner el metodo del menu anterior, en este caso seria adminMenu()
+
+		cout<<"Ingrese el nombre del restaurante que desea buscar"<<endl;
+		cin>>busquedaRestaurante;
+		cout<<endl;
+
+		/* Create SQL statement */
+					 sql = "SELECT * from RESTAURANTE WHERE NOMBRE_RESTAURANTE = " + busquedaRestaurante;
+
+
+					/* Execute SQL statement */
+					 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					 if( rc != SQLITE_OK ) {
+						fprintf(stderr, "SQL error: %s\n", zErrMsg);
+						sqlite3_free(zErrMsg);
+					 } else {
+						fprintf(stdout, "Operation done successfully\n");
+					 }
+					 sqlite3_close(db);
+					 adminMenu();
 }
 void adminMenu3(){
 	cout<<"Modificar LOS RESTAURANTES"<<endl;
-	//con el metodo Alter table
+		//con el metodo Alter table (para modificar los datos UPDATE)
 
+
+		string nomResMod;
+
+			cout<<"Ingrese el nombre del restaurante que desea modificar"<<endl;
+			cin>>nomResMod;
+			cout<<endl;
+
+			int canMesas;
+			cout<<"Ingrese la cantidad de mensas que desea modificar"<<endl;
+			cin>>canMesas;
+			cout<<endl;
+
+
+					/* Create SQL statement */
+							 sql = "UPDATE RESTAURANTE set NUM_MESAS = " + canMesas + "WHERE NOMBRE_RESTAURANTE = " + nomResMod;
+
+
+							/* Execute SQL statement */
+							 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+							 if( rc != SQLITE_OK ) {
+								fprintf(stderr, "SQL error: %s\n", zErrMsg);
+								sqlite3_free(zErrMsg);
+							 } else {
+								fprintf(stdout, "Operation done successfully\n");
+							 }
+							 sqlite3_close(db);
+							 adminMenu();
 }
 void adminMenu4(){
-
 	cout<<"ANYADIR LOS RESTAURANTES"<<endl;
-	//con el metodo insert
+		//con el metodo insert
+
+		int idRes, telRes, numMesaRes;
+			string nombreRes, dirRes, tipoComRes;
+			cout<<"Ingrese el id del restaurante que desea anyadir"<<endl;
+			cin>>idRes;
+			cout<<endl;
+			cout<<"Ingrese el nombre del restaurante que desea anyadir"<<endl;
+			cin>>nombreRes;
+			cout<<endl;
+			cout<<"Ingrese el direccion del restaurante que desea anyadir"<<endl;
+			cin>>dirRes;
+			cout<<endl;
+			cout<<"Ingrese el tipo de comida del restaurante que desea anyadir"<<endl;
+			cin>>tipoComRes;
+			cout<<endl;
+			cout<<"Ingrese el telefono del restaurante que desea anyadir"<<endl;
+			cin>>telRes;
+			cout<<endl;
+			cout<<"Ingrese el numero de mesas del restaurante que desea anyadir"<<endl;
+			cin>>numMesaRes;
+			cout<<endl;
+
+			 /* Create SQL statement */
+
+			// revisar!
+					 sql = "INSERT INTO RESTAURANTE (ID_RESTAURANTE, NOMBRE_RESTAURANTE, DIRECCION_RESTAURANTE, TIPO_COMIDA, TELEFONO, NUM_MESAS) " \
+							 "VALUES( %d, %s, %s, %s, %d, %d);", idRes, nombreRes, dirRes, tipoComRes, telRes, numMesaRes;
+
+					/* Execute SQL statement */
+					 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+					 if( rc != SQLITE_OK ) {
+						fprintf(stderr, "SQL error: %s\n", zErrMsg);
+						sqlite3_free(zErrMsg);
+					 } else {
+						fprintf(stdout, "Operation done successfully\n");
+					 }
+					 sqlite3_close(db);
+					 adminMenu();
 }
 void adminMenu5(){
 
 	cout<<"ELIMINAR LOS RESTAURANTES"<<endl;
-	//con el metodo delete
+		//con el metodo delete
+
+		string nomResEliminar;
+
+			cout<<"Ingrese el nombre del restaurante que desea eliminar"<<endl;
+			cin>>nomResEliminar;
+			cout<<endl;
+
+
+				/* Create SQL statement */
+						 sql = "DELETE * from RESTAURANTE WHERE NOMBRE_RESTAURANTE = " + nomResEliminar;
+
+
+						/* Execute SQL statement */
+						 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+						 if( rc != SQLITE_OK ) {
+							fprintf(stderr, "SQL error: %s\n", zErrMsg);
+							sqlite3_free(zErrMsg);
+						 } else {
+							fprintf(stdout, "Operation done successfully\n");
+						 }
+						 sqlite3_close(db);
+						 adminMenu();
 }
 void adminMenu6(){
 	//Lleva al inicio
