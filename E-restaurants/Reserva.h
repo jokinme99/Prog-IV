@@ -15,12 +15,13 @@ class Reserva
 		int idReserva;
 		int hora;
 		int dia;
-		int idMesa;
+		int numMesa;
+		char* usuario[20];
 
 	public:
 
 		Reserva();
-		Reserva(const int, int, int, int);
+		Reserva(const int, int, int, int,char*);
 		Reserva(const Reserva&);
 		~Reserva();
 
@@ -30,8 +31,10 @@ class Reserva
 		void setHora(int);
 		int getDia()const;
 		void setDia(int);
-		int getIdMesa()const;
-		void setIdMesa(int);
+		int getNumMesa()const;
+		void setNumMesa(int);
+		char* getUsuario()const;
+		void setUsuario(char*);
 };
 
 

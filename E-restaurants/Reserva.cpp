@@ -13,16 +13,18 @@ Reserva::Reserva()
 	this->idReserva = 0;
 	this->hora = 00;
 	this->dia = 0;
-	this->idMesa = 0;
+	this->numMesa = 0;
+	this->usuario = "\0";
 
 }
 
-Reserva::Reserva(const int idReserva, int hora, int dia, int idMesa)
+Reserva::Reserva(const int idReserva, int hora, int dia, int numMesa)
 {
 	this->idReserva = idReserva;
 	this->hora = hora;
 	this->dia = dia;
-	this->idMesa = idMesa;
+	this->numMesa = numMesa;
+	this->usuario = usuario;
 }
 
 Reserva::Reserva(const Reserva& r)
@@ -30,7 +32,8 @@ Reserva::Reserva(const Reserva& r)
 	this->idReserva = r.idReserva;
 	this->hora = r.hora;
 	this->dia = r.dia;
-	this->idMesa = r.idMesa;
+	this->numMesa = r.numMesa;
+	this->usuario = r.usuario;
 }
 
 Reserva::~Reserva()
@@ -66,11 +69,19 @@ void Reserva::setDia(int dia)
 	this->dia = dia;
 }
 
-int Reserva::getIdMesa()const
+int Reserva::getNumMesa()const
 {
-	return this->idMesa;
+	return this->numMesa;
 }
-void Reserva::setIdMesa(int idMesa)
+void Reserva::setNumMesa(int idMesa)
 {
-	this->idMesa = idMesa;
+	this->numMesa = numMesa;
+}
+char* Reserva::getUsuario()const
+{
+	return this->usuario;
+}
+void Reserva::setUsuario(char* usuario)
+{
+	this->usuario = usuario;
 }
