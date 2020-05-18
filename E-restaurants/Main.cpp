@@ -554,7 +554,6 @@ void adminMenu4(){
 
 		cout<<"Ingrese el id del menu que desea anyadir: ";cin>>id;cout<<endl;
 		cout<<"Ingrese el id del producto que desea anyadir: ";cin>>id1;cout<<endl;
-		//id de producto se asigna solo, autoIncremental
 
 		 /* Create SQL statement */
 		sql = "INSERT INTO MENU_TIENE_PRODUCTOS (ID_MENU, ID_PRODUCTO) " \
@@ -595,7 +594,6 @@ void adminMenu4(){
 	case 7:{
 		cout<<"Ingrese el id del restaurante que desea anyadir: ";cin>>id;cout<<endl;
 		cout<<"Ingrese el id del trabajador que desea anyadir: ";cin>>id1;cout<<endl;
-		//id de producto se asigna solo, autoIncremental
 
 		 /* Create SQL statement */
 		sql = "INSERT INTO RESTAURANTE_TIENE_TRABAJADORES (ID_RESTAURANTE, ID_TRABAJADOR) " \
