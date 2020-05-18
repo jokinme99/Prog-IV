@@ -724,34 +724,19 @@ cin>>opcionAdmin;
 		opcionAdmin != 4 && opcionAdmin != 5 && opcionAdmin!= 6);
 switch(opcionAdmin){
 case 1:{
-	system("cls");
 	adminMenu1();
-	system("cls");
-	adminMenu();
 } break;
 case 2:{
-	system("cls");
 adminMenu2();
-system("cls");
-adminMenu();
 }break;
 case 3:{
-	system("cls");
 adminMenu3();
-system("cls");
-adminMenu();
 }break;
 case 4:{
-	system("cls");
 adminMenu4();
-system("cls");
-adminMenu();
 }break;
 case 5:{
-	system("cls");
 adminMenu5();
-system("cls");
-adminMenu();
 }break;
 case 6:{
 admin();
