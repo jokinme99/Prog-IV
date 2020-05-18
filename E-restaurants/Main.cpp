@@ -518,16 +518,38 @@ void adminMenu4(){
 	rc = sqlite3_open("e-restaurants.db", &db);
 	switch(opcionAdminMenu4){
 	case 1:{
-		cout<<"Ingrese el id del restaurante que desea anyadir: ";cin>>id;cout<<endl;
-		cout<<"Ingrese el nombre del restaurante que desea anyadir: ";cin>>nombre;cout<<endl;
-		cout<<"Ingrese el direccion del restaurante que desea anyadir: ";cin>>direccion;cout<<endl;
-		cout<<"Ingrese el tipo de comida del restaurante que desea anyadir: ";cin>>tipoComida;cout<<endl;
-		cout<<"Ingrese el telefono del restaurante que desea anyadir: ";cin>>telefono;cout<<endl;
-		cout<<"Ingrese el numero de mesas del restaurante que desea anyadir: ";cin>>numMesa;cout<<endl;
+		char id_res[100], nom_res[100], dir_res[100], tipo_com[100], tel_res[100], num_mesas[100];
+		cout<<"Ingrese el id del restaurante que desea anyadir: ";cin>>id_res;cout<<endl;
+		cout<<"Ingrese el nombre del restaurante que desea anyadir: ";cin>>nom_res;cout<<endl;
+		cout<<"Ingrese el direccion del restaurante que desea anyadir: ";cin>>dir_res;cout<<endl;
+		cout<<"Ingrese el tipo de comida del restaurante que desea anyadir: ";cin>>tipo_com;cout<<endl;
+		cout<<"Ingrese el telefono del restaurante que desea anyadir: ";cin>>tel_res;cout<<endl;
+		cout<<"Ingrese el numero de mesas del restaurante que desea anyadir: ";cin>>num_mesas;cout<<endl;
 
-		 /* Create SQL statement */
-		/*sql = "INSERT INTO RESTAURANTE (ID_RESTAURANTE, NOMBRE_RESTAURANTE, DIRECCION_RESTAURANTE, TIPO_COMIDA, TELEFONO, NUM_MESAS) " \
-		"VALUES( %i, %s, %s, %s, %i, %i);", id, nombre, direccion, tipoComida, telefono, numMesa;*/
+		/* Create SQL statement */
+		char sql[] = "INSERT INTO RESTAURANTE VALUES (";
+
+		char con1[] = ",", con2[]="'", con3[]="'", con4[]=",", con5[]="'", con6[]="'", con7[]=",", con8[]="'", con9[]="'", con10[]=",", con11[]=",", con12[] = "'", con13[] =")", con14[] = "'", con15[] ="";
+
+		strcat(sql,id_res);
+		strcat(sql,con1);
+		strcat(sql,con2);
+		strcat(sql,nom_res);
+		strcat(sql,con3);
+		strcat(sql,con4);
+		strcat(sql,con5);
+		strcat(sql,dir_res);
+		strcat(sql,con6);
+		strcat(sql,con7);
+		strcat(sql,con8);
+		strcat(sql,tipo_com);
+		strcat(sql,con9);
+		strcat(sql,con10);
+		strcat(sql,tel_res);
+		strcat(sql,con11);
+		strcat(sql,num_mesas);
+		strcat(sql,con13);
+		strcat(sql,con15);
 
 		/* Execute SQL statement */
 		 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
@@ -541,36 +563,60 @@ void adminMenu4(){
 		adminMenu4();
 	}break;
 	case 2:{
-		cout<<"Ingrese el id del menu que desea anyadir: ";cin>>id;cout<<endl;
-				cout<<"Ingrese el precio del menu que desea anyadir: ";cin>>precio;cout<<endl;
+		char id_men[100], pre_men[100];
+		cout<<"Ingrese el id del menu que desea anyadir: ";cin>>id_men;cout<<endl;
+		cout<<"Ingrese el precio del menu que desea anyadir: ";cin>>pre_men;cout<<endl;
 
+		/* Create SQL statement */
+		char sql[] = "INSERT INTO MENU VALUES (";
 
-				 /* Create SQL statement */
-				/*sql = "INSERT INTO MENU (ID_MENU, PRECIO_MENU) " \
-				"VALUES( %i, %f);", id, precio;*/
+		char con1[] = "," , con2[] = ")", con3[] = "";
 
-				/* Execute SQL statement */
-				 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
-				 if( rc != SQLITE_OK ) {
-					 fprintf(stderr, "SQL error: %s\n", zErrMsg);
-					 sqlite3_free(zErrMsg);
-				} else {
-					fprintf(stdout, "Operation done successfully\n");
-				}
-				 sqlite3_close(db);
-				adminMenu4();
+		strcat(sql,id_men);
+		strcat(sql,con1);
+		strcat(sql,pre_men);
+		strcat(sql,con2);
+		strcat(sql,con3);
+
+		/* Execute SQL statement */
+		 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+		 if( rc != SQLITE_OK ) {
+			 fprintf(stderr, "SQL error: %s\n", zErrMsg);
+			 sqlite3_free(zErrMsg);
+		} else {
+			fprintf(stdout, "Operation done successfully\n");
+		}
+		 sqlite3_close(db);
+		adminMenu4();
 	}break;
 	case 3:{
-
-		cout<<"Ingrese el id del producto que desea anyadir: ";cin>>id;cout<<endl;
-		cout<<"Ingrese el nombre del producto que desea anyadir: ";cin>>nombre;cout<<endl;
-		cout<<"Ingrese la descripcion del restaurante que desea anyadir: ";cin>>direccion;cout<<endl;
-		cout<<"Ingrese el precio del producto que desea anyadir: ";cin>>precio;cout<<endl;
+		char id_prod[100], nom_prod[100], des_prod[100], prec_prod[100];
+		cout<<"Ingrese el id del producto que desea anyadir: ";cin>>id_prod;cout<<endl;
+		cout<<"Ingrese el nombre del producto que desea anyadir: ";cin>>nom_prod;cout<<endl;
+		cout<<"Ingrese la descripcion del restaurante que desea anyadir: ";cin>>des_prod;cout<<endl;
+		cout<<"Ingrese el precio del producto que desea anyadir: ";cin>>prec_prod;cout<<endl;
 
 
 		 /* Create SQL statement */
-		/*sql = "INSERT INTO PRODUCTO (ID_PRODUCTO, NOMBRE_PRODUCTO, DESCRIPCION_PRODUCTO, PRECIO) " \
-		"VALUES( %i, %s, %s, %f);", id, nombre, direccion, precio;*/
+		char sql[] = "INSERT INTO PRODUCTO VALUES (";
+
+		char con1[] = "," , con2[] ="'", con3[] ="'", con4[] = ",", con5[] = "'", con6[] ="'", con7[] = ",", con8[] =")", con9[]="";
+
+		strcat(sql,id_prod);
+		strcat(sql,con1);
+		strcat(sql,con2);
+		strcat(sql,nom_prod);
+		strcat(sql,con3);
+		strcat(sql,con4);
+		strcat(sql,con5);
+		strcat(sql,des_prod);
+		strcat(sql,con6);
+		strcat(sql,con7);
+		strcat(sql,prec_prod);
+		strcat(sql,con8);
+		strcat(sql,con9);
+
+
 
 		/* Execute SQL statement */
 		 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
@@ -586,15 +632,32 @@ void adminMenu4(){
 	}break;
 	case 4:{
 
-		cout<<"Ingrese el id del trabajador que desea anyadir: ";cin>>id;cout<<endl;
-		cout<<"Ingrese el nombre del trabajador que desea anyadir: ";cin>>nombre;cout<<endl;
-		cout<<"Ingrese el dni del trabajador que desea anyadir: ";cin>>dni;cout<<endl;
-		cout<<"Ingrese el sueldo del trabajador que desea anyadir: ";cin>>sueldo;cout<<endl;
+		char id_tra[100], nom_tra[100], dni_tra[100], suel_tra[100];
+		cout<<"Ingrese el id del trabajador que desea anyadir: ";cin>>id_tra;cout<<endl;
+		cout<<"Ingrese el nombre del trabajador que desea anyadir: ";cin>>nom_tra;cout<<endl;
+		cout<<"Ingrese el dni del trabajador que desea anyadir: ";cin>>dni_tra;cout<<endl;
+		cout<<"Ingrese el sueldo del trabajador que desea anyadir: ";cin>>suel_tra;cout<<endl;
 
 
 		 /* Create SQL statement */
-	/*	sql = "INSERT INTO TRABAJADOR (ID_TRABAJADOR, NOMBRE_TRABAJADOR, DNI, SUELDO) " \
-		"VALUES( %i, %s, %s, %f);", id, nombre, dni, sueldo;*/
+		char sql[] = "INSERT INTO TRABAJADOR VALUES (";
+
+		char con1[] = "," , con2[] ="'", con3[] ="'", con4[] = ",", con5[] = "'", con6[] ="'", con7[] = ",", con8[] =")", con9[]="";
+
+		strcat(sql,id_tra);
+		strcat(sql,con1);
+		strcat(sql,con2);
+		strcat(sql,nom_tra);
+		strcat(sql,con3);
+		strcat(sql,con4);
+		strcat(sql,con5);
+		strcat(sql,dni_tra);
+		strcat(sql,con6);
+		strcat(sql,con7);
+		strcat(sql,suel_tra);
+		strcat(sql,con8);
+		strcat(sql,con9);
+
 
 		/* Execute SQL statement */
 		 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
@@ -609,12 +672,22 @@ void adminMenu4(){
 	}break;
 	case 5:{
 
-		cout<<"Ingrese el id del menu que desea anyadir: ";cin>>id;cout<<endl;
-		cout<<"Ingrese el id del producto que desea anyadir: ";cin>>id1;cout<<endl;
+		char id_m[100], id_p[100];
+		cout<<"Ingrese el id del menu que desea anyadir: ";cin>>id_m;cout<<endl;
+		cout<<"Ingrese el id del producto que desea anyadir: ";cin>>id_p;cout<<endl;
 
 		 /* Create SQL statement */
-	/*	sql = "INSERT INTO MENU_TIENE_PRODUCTOS (ID_MENU, ID_PRODUCTO) " \
-		"VALUES( %i, %i);", id, id1;*/
+		char sql[] = "INSERT INTO MENU_TIENE_PRODUCTOS VALUES (";
+
+		char con1[] = "," , con2[] = ")", con3[] ="";
+
+		strcat(sql,id_m);
+		strcat(sql,con1);
+		strcat(sql,id_p);
+		strcat(sql,con2);
+		strcat(sql,con3);
+
+
 
 		/* Execute SQL statement */
 		 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
@@ -629,14 +702,25 @@ void adminMenu4(){
 
 	}break;
 	case 6:{
-		cout<<"Ingrese el id del menu que desea anyadir: ";cin>>id;cout<<endl;
-		cout<<"Ingrese el id del restaurante que desea anyadir: ";cin>>id1;cout<<endl;
+		char id_me[100], id_re[100];
+		cout<<"Ingrese el id del menu que desea anyadir: ";cin>>id_me;cout<<endl;
+		cout<<"Ingrese el id del restaurante que desea anyadir: ";cin>>id_re;cout<<endl;
 		//id de producto se asigna solo, autoIncremental
 
 		 /* Create SQL statement */
-		/*sql = "INSERT INTO RESTAURANTE_TIENE_MENUS (ID_MENU, ID_RESTAURANTE) " \
-		"VALUES( %i, %i);", id, id1;
-*/
+		char sql[] = "INSERT INTO RESTAURANTE_TIENE_MENUS VALUES (";
+
+		char con1[] = "," , con2[] = ")", con3[] ="";
+
+		strcat(sql,id_me);
+		strcat(sql,con1);
+		strcat(sql,id_re);
+		strcat(sql,con2);
+		strcat(sql,con3);
+
+
+
+
 		/* Execute SQL statement */
 		 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 		 if( rc != SQLITE_OK ) {
@@ -649,12 +733,22 @@ void adminMenu4(){
 		adminMenu4();
 	}break;
 	case 7:{
-		cout<<"Ingrese el id del restaurante que desea anyadir: ";cin>>id;cout<<endl;
-		cout<<"Ingrese el id del trabajador que desea anyadir: ";cin>>id1;cout<<endl;
+		char id_resta[100], id_trab[100];
+		cout<<"Ingrese el id del restaurante que desea anyadir: ";cin>>id_resta;cout<<endl;
+		cout<<"Ingrese el id del trabajador que desea anyadir: ";cin>>id_trab;cout<<endl;
 
 		 /* Create SQL statement */
-	/*	sql = "INSERT INTO RESTAURANTE_TIENE_TRABAJADORES (ID_RESTAURANTE, ID_TRABAJADOR) " \
-		"VALUES( %i, %i);", id, id1;*/
+		char sql[] = "INSERT INTO RESTAURANTE_TIENE_TRABAJADORES VALUES (";
+
+		char con1[] = "," , con2[] = ")", con3[] ="";
+
+		strcat(sql,id_resta);
+		strcat(sql,con1);
+		strcat(sql,id_trab);
+		strcat(sql,con2);
+		strcat(sql,con3);
+
+
 
 		/* Execute SQL statement */
 		 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
