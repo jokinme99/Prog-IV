@@ -17,6 +17,7 @@
 #include "Menu.h"
 #include <stdio.h>
 #include <windows.h>
+#include "Reserva.h"
 #include "sqlite3.h"
 #define USUARIO "usuario"
 #define CONTRA "usuario"
