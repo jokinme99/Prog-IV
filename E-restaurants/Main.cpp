@@ -1349,6 +1349,17 @@ int menuReserva()
 	cin<<seleccionHora;
 	}while(seleccionHora < 1 || seleccionHora > 2);
 
+	sqlite3 *db;
+		int rc = sqlite3_open("e-restaurants.db", &db);	//abrir base de datos
+		if (rc != SQLITE_OK) {
+			cout << "Error opening database" << endl;
+			return rc;
+		}
+
+		//sale error por que clipse no reconoce la libreria sqlite3 bien, esta bien.
+		rc = crearReserva(db,usuarioReserva,seleccionDia,seleccionHora);
+
+
 	return 0;
 
 };
