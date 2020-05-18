@@ -749,7 +749,6 @@ void adminMenu4(){
 		strcat(sql,con3);
 
 
-
 		/* Execute SQL statement */
 		 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 		 if( rc != SQLITE_OK ) {
