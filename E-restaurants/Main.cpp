@@ -56,7 +56,7 @@ void clienteMenu();
 void clienteCaso1();
 void clienteCaso2();
 void cliente();
-void menuReserva();
+int menuReserva();
 
 
 
@@ -1306,7 +1306,7 @@ int main() {
 	inicio();
 }
 
-void menuReserva()
+int menuReserva()
 {
 	char usuarioReserva[15];
 	int seleccion;
@@ -1349,7 +1349,7 @@ void menuReserva()
 	cin<<seleccionHora;
 	}while(seleccionHora < 1 || seleccionHora > 2);
 
-
+	return 0;
 
 };
 
