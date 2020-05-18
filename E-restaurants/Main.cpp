@@ -26,7 +26,7 @@ string nombreAdmin;string contraAdmin;string linea;string no;string co;string pa
 string nombreUsuario;string contraUsuario;
 int con = 0;int opUsu;int opcionAdminMenu1;int busquedaMenu;char *busqueda;
 int opcionAdminMenu2;int opcionAdminMenu3; int opcionAdminMenu4;int opcionAdminMenu5;
-string nom, com, nomAu, conAu;
+//string nom, com, nomAu, conAu;
 int opcionClienteMenu;
 void adminMenu();void inicio();void adminMenu1();void adminMenu2();void adminMenu3();void adminMenu4();void adminMenu5();void adminMenu6();void admin(); void adminCaso1();void adminCaso2();
 void clienteMenu(); void clienteCaso1();void clienteCaso2();void cliente();
@@ -207,11 +207,19 @@ void adminMenu2(){
 	rc = sqlite3_open("e-restaurants.db", &db);
 	switch(opcionAdminMenu2){
 	case 1:{
+
+		char nom[100];
 		cout<<"Ingrese el nombre del restaurante que desea buscar"<<endl;
-		cin>>busqueda;
+		cin>>nom;
 		cout<<endl;
 		/* Create SQL statement */
-		sql = "SELECT * from RESTAURANTE WHERE NOMBRE_RESTAURANTE = " + busqueda;
+		char sql[] = "SELECT * from RESTAURANTE WHERE NOMBRE_RESTAURANTE = '";
+
+		strcat(sql,nom);
+
+		char fr2[] = "'";
+
+		strcat(sql,fr2);
 
 		/* Execute SQL statement */
 		rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
@@ -225,11 +233,20 @@ void adminMenu2(){
 		 adminMenu2();
 	}break;
 	case 2:{
+
+		char nom[100];
 		cout<<"Ingrese el nombre del producto que desea buscar"<<endl;
-		cin>>busqueda;
+		cin>>nom;
 		cout<<endl;
 		/* Create SQL statement */
-		sql = "SELECT * from PRODUCTO WHERE NOMBRE_PRODUCTO = " + busqueda;
+		char sql[] = "SELECT * from PRODUCTO WHERE NOMBRE_PRODUCTO = '";  //+ busqueda;
+
+		strcat(sql,nom);
+
+		char fr2[] = "'";
+
+		strcat(sql,fr2);
+
 		/* Execute SQL statement */
 		rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 		if( rc != SQLITE_OK ) {
@@ -243,11 +260,19 @@ void adminMenu2(){
 	}break;
 	case 3:{
 
+		char nom[100];
 		cout<<"Ingrese el numero del menu que desea buscar"<<endl;
-		cin>>busquedaMenu;
+		cin>>nom;
 		cout<<endl;
 		/* Create SQL statement */
-		sql = "SELECT * from MENU WHERE ID_MENU = " + busquedaMenu;
+		char sql[] = "SELECT * from MENU WHERE ID_MENU = "; // + busquedaMenu;
+
+		strcat(sql,nom);
+
+		char fr2[] = "";
+
+		strcat(sql,fr2);
+
 		/* Execute SQL statement */
 		rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 		if( rc != SQLITE_OK ) {
@@ -260,11 +285,19 @@ void adminMenu2(){
 		 adminMenu2();
 	}break;
 	case 4:{
+		char nom[100];
 		cout<<"Ingrese el nombre del trabajador que desea buscar"<<endl;
-		cin>>busqueda;
+		cin>>nom;
 		cout<<endl;
 		/* Create SQL statement */
-		sql = "SELECT * from TRABAJADOR WHERE NOMBRE_TRABAJADOR = " + busqueda;
+		char sql[] = "SELECT * from TRABAJADOR WHERE NOMBRE_TRABAJADOR = '";
+
+		strcat(sql,nom);
+
+		char fr2[] = "'";
+
+		strcat(sql,fr2);
+
 		/* Execute SQL statement */
 		rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 		if( rc != SQLITE_OK ) {
@@ -277,11 +310,19 @@ void adminMenu2(){
 		 adminMenu2();
 	}break;
 	case 5:{
+		char nom[100];
 		cout<<"Ingrese el numero de menu que desea buscar, para ver que productos contiene"<<endl;
-		cin>>busquedaMenu;
+		cin>>nom;
 		cout<<endl;
 		/* Create SQL statement */
-		sql = "SELECT * from MENU_TIENE_PRODUCTOS WHERE ID_MENU = " + busquedaMenu;
+		char sql []= "SELECT * from MENU_TIENE_PRODUCTOS WHERE ID_MENU = ";
+
+		strcat(sql,nom);
+
+		char fr2[] = "";
+
+		strcat(sql,fr2);
+
 		/* Execute SQL statement */
 		rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 		if( rc != SQLITE_OK ) {
@@ -295,11 +336,19 @@ void adminMenu2(){
 
 	}break;
 	case 6:{
+		char nom[100];
 		cout<<"Ingrese el numero de menu que desea buscar, para ver en que restaurantes hay ese menu"<<endl;
-				cin>>busquedaMenu;
+				cin>>nom;
 				cout<<endl;
 				/* Create SQL statement */
-				sql = "SELECT * from RESTAURANTE_TIENE_MENUS WHERE ID_MENU = " + busquedaMenu;
+				char sql[] = "SELECT * from RESTAURANTE_TIENE_MENUS WHERE ID_MENU = ";
+
+				strcat(sql,nom);
+
+				char fr2[] = "";
+
+				strcat(sql,fr2);
+
 				/* Execute SQL statement */
 				rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 				if( rc != SQLITE_OK ) {
@@ -312,11 +361,19 @@ void adminMenu2(){
 				 adminMenu2();
 	}break;
 	case 7:{
+		char nom[100];
 		cout<<"Ingrese el id de restaurante que desea buscar, para ver que trabajadores contiene"<<endl;
-				cin>>busquedaMenu;
+				cin>>nom;
 				cout<<endl;
 				/* Create SQL statement */
-				sql = "SELECT * from RESTAURANTE_TIENE_MENUS WHERE ID_RESTAURANTE = " + busquedaMenu;
+				char sql[]= "SELECT * from RESTAURANTE_TIENE_TRABAJADORES WHERE ID_RESTAURANTE = ";
+
+				strcat(sql,nom);
+
+				char fr2[] = "";
+
+				strcat(sql,fr2);
+
 				/* Execute SQL statement */
 				rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 				if( rc != SQLITE_OK ) {
@@ -362,7 +419,7 @@ void adminMenu3(){
 		cout<<endl;
 
 		/* Create SQL statement */
-		sql = "UPDATE RESTAURANTE set NUM_MESAS = " + canMesas + "WHERE NOMBRE_RESTAURANTE = " + nomMod;
+		//sql = "UPDATE RESTAURANTE set NUM_MESAS = " + canMesas + "WHERE NOMBRE_RESTAURANTE = " + nomMod;
 		/* Execute SQL statement */
 		rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 		if( rc != SQLITE_OK ) {
@@ -381,7 +438,7 @@ void adminMenu3(){
 		cin>>dinero;cout<<endl;
 
 		/* Create SQL statement */
-		sql = "UPDATE MENU set PRECIO_MENU = " + dinero + "WHERE ID_MENU = " + canMesas;
+		//sql = "UPDATE MENU set PRECIO_MENU = " + dinero + "WHERE ID_MENU = " + canMesas;
 		/* Execute SQL statement */
 		rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 		if( rc != SQLITE_OK ) {
@@ -401,7 +458,7 @@ void adminMenu3(){
 		cout<<endl;
 
 		/* Create SQL statement */
-		sql = "UPDATE TRABAJADOR set SUELDO = " + dinero + "WHERE NOMBRE_TRABAJADOR = " + nomMod;
+		//sql = "UPDATE TRABAJADOR set SUELDO = " + dinero + "WHERE NOMBRE_TRABAJADOR = " + nomMod;
 		/* Execute SQL statement */
 		rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 		if( rc != SQLITE_OK ) {
@@ -420,7 +477,7 @@ void adminMenu3(){
 		cin>>dinero;cout<<endl;
 
 		/* Create SQL statement */
-		sql = "UPDATE PRODUCTO set PRECIO = " + dinero + "WHERE NOMBRE_TRABAJADOR = " + nomMod;
+		//sql = "UPDATE PRODUCTO set PRECIO = " + dinero + "WHERE NOMBRE_TRABAJADOR = " + nomMod;
 		/* Execute SQL statement */
 		rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 		if( rc != SQLITE_OK ) {
@@ -469,8 +526,8 @@ void adminMenu4(){
 		cout<<"Ingrese el numero de mesas del restaurante que desea anyadir: ";cin>>numMesa;cout<<endl;
 
 		 /* Create SQL statement */
-		sql = "INSERT INTO RESTAURANTE (ID_RESTAURANTE, NOMBRE_RESTAURANTE, DIRECCION_RESTAURANTE, TIPO_COMIDA, TELEFONO, NUM_MESAS) " \
-		"VALUES( %i, %s, %s, %s, %i, %i);", id, nombre, direccion, tipoComida, telefono, numMesa;
+		/*sql = "INSERT INTO RESTAURANTE (ID_RESTAURANTE, NOMBRE_RESTAURANTE, DIRECCION_RESTAURANTE, TIPO_COMIDA, TELEFONO, NUM_MESAS) " \
+		"VALUES( %i, %s, %s, %s, %i, %i);", id, nombre, direccion, tipoComida, telefono, numMesa;*/
 
 		/* Execute SQL statement */
 		 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
@@ -489,8 +546,8 @@ void adminMenu4(){
 
 
 				 /* Create SQL statement */
-				sql = "INSERT INTO MENU (ID_MENU, PRECIO_MENU) " \
-				"VALUES( %i, %f);", id, precio;
+				/*sql = "INSERT INTO MENU (ID_MENU, PRECIO_MENU) " \
+				"VALUES( %i, %f);", id, precio;*/
 
 				/* Execute SQL statement */
 				 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
@@ -512,8 +569,8 @@ void adminMenu4(){
 
 
 		 /* Create SQL statement */
-		sql = "INSERT INTO PRODUCTO (ID_PRODUCTO, NOMBRE_PRODUCTO, DESCRIPCION_PRODUCTO, PRECIO) " \
-		"VALUES( %i, %s, %s, %f);", id, nombre, direccion, precio;
+		/*sql = "INSERT INTO PRODUCTO (ID_PRODUCTO, NOMBRE_PRODUCTO, DESCRIPCION_PRODUCTO, PRECIO) " \
+		"VALUES( %i, %s, %s, %f);", id, nombre, direccion, precio;*/
 
 		/* Execute SQL statement */
 		 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
@@ -536,8 +593,8 @@ void adminMenu4(){
 
 
 		 /* Create SQL statement */
-		sql = "INSERT INTO TRABAJADOR (ID_TRABAJADOR, NOMBRE_TRABAJADOR, DNI, SUELDO) " \
-		"VALUES( %i, %s, %s, %f);", id, nombre, dni, sueldo;
+	/*	sql = "INSERT INTO TRABAJADOR (ID_TRABAJADOR, NOMBRE_TRABAJADOR, DNI, SUELDO) " \
+		"VALUES( %i, %s, %s, %f);", id, nombre, dni, sueldo;*/
 
 		/* Execute SQL statement */
 		 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
@@ -556,8 +613,8 @@ void adminMenu4(){
 		cout<<"Ingrese el id del producto que desea anyadir: ";cin>>id1;cout<<endl;
 
 		 /* Create SQL statement */
-		sql = "INSERT INTO MENU_TIENE_PRODUCTOS (ID_MENU, ID_PRODUCTO) " \
-		"VALUES( %i, %i);", id, id1;
+	/*	sql = "INSERT INTO MENU_TIENE_PRODUCTOS (ID_MENU, ID_PRODUCTO) " \
+		"VALUES( %i, %i);", id, id1;*/
 
 		/* Execute SQL statement */
 		 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
@@ -577,9 +634,9 @@ void adminMenu4(){
 		//id de producto se asigna solo, autoIncremental
 
 		 /* Create SQL statement */
-		sql = "INSERT INTO RESTAURANTE_TIENE_MENUS (ID_MENU, ID_RESTAURANTE) " \
+		/*sql = "INSERT INTO RESTAURANTE_TIENE_MENUS (ID_MENU, ID_RESTAURANTE) " \
 		"VALUES( %i, %i);", id, id1;
-
+*/
 		/* Execute SQL statement */
 		 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 		 if( rc != SQLITE_OK ) {
@@ -596,8 +653,8 @@ void adminMenu4(){
 		cout<<"Ingrese el id del trabajador que desea anyadir: ";cin>>id1;cout<<endl;
 
 		 /* Create SQL statement */
-		sql = "INSERT INTO RESTAURANTE_TIENE_TRABAJADORES (ID_RESTAURANTE, ID_TRABAJADOR) " \
-		"VALUES( %i, %i);", id, id1;
+	/*	sql = "INSERT INTO RESTAURANTE_TIENE_TRABAJADORES (ID_RESTAURANTE, ID_TRABAJADOR) " \
+		"VALUES( %i, %i);", id, id1;*/
 
 		/* Execute SQL statement */
 		 rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
@@ -636,9 +693,20 @@ void adminMenu5(){
 		 rc = sqlite3_open("e-restaurants.db", &db);
 		switch(opcionAdminMenu5){
 		case 1 :{
-				cout<<"Ingrese el nombre del restaurante que desea eliminar: ";cin>>nombreEliminar;cout<<endl;
+				char nom[100];
+				cout<<"Ingrese el nombre del restaurante que desea eliminar: "<<endl;
+				cin>>nom;
+				cout<<endl;
 				/* Create SQL statement */
-				sql = "DELETE * from RESTAURANTE WHERE NOMBRE_RESTAURANTE = " + nombreEliminar;
+				char sql[] = "DELETE from RESTAURANTE WHERE NOMBRE_RESTAURANTE = '";
+
+				strcat(sql,nom);
+
+				char fr2[] = "'";
+
+				strcat(sql,fr2);
+
+
 				/* Execute SQL statement */
 				rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 				if( rc != SQLITE_OK ) {
@@ -651,9 +719,20 @@ void adminMenu5(){
 					adminMenu5();
 		}break;
 		case 2:{
-			cout<<"Ingrese el nombre del producto que desea eliminar: ";cin>>nombreEliminar;cout<<endl;
+			char nom[100];
+			cout<<"Ingrese el nombre del producto que desea eliminar: "<<endl;
+			cin>>nom;
+			cout<<endl;
 			/* Create SQL statement */
-			sql = "DELETE * from PRODUCTO WHERE NOMBRE_PRODUCTO = " + nombreEliminar;
+			char sql[] = "DELETE from PRODUCTO WHERE NOMBRE_PRODUCTO = '";
+
+			strcat(sql,nom);
+
+			char fr2[] = "'";
+
+			strcat(sql,fr2);
+
+
 			/* Execute SQL statement */
 			rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 			if( rc != SQLITE_OK ) {
@@ -666,9 +745,20 @@ void adminMenu5(){
 				adminMenu5();
 		}break;
 		case 3:{
-			cout<<"Ingrese el numero del menu que desea eliminar: ";cin>>idEliminar;cout<<endl;
+			char nom[100];
+			cout<<"Ingrese el numero del menu que desea eliminar: "<<endl;
+			cin>>nom;
+			cout<<endl;
 			/* Create SQL statement */
-			sql = "DELETE * from MENU WHERE ID_MENU = " + idEliminar;
+			char sql[] = "DELETE from MENU WHERE ID_MENU = ";
+
+			strcat(sql,nom);
+
+			char fr2[] = "";
+
+			strcat(sql,fr2);
+
+
 			/* Execute SQL statement */
 			rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 			if( rc != SQLITE_OK ) {
@@ -682,9 +772,19 @@ void adminMenu5(){
 
 		}break;
 		case 4:{
-			cout<<"Ingrese el nombre del trabajador que desea eliminar: ";cin>>nombreEliminar;cout<<endl;
+			char nom[100];
+			cout<<"Ingrese el nombre del trabajador que desea eliminar: "<<endl;
+			cin>>nom;
+			cout<<endl;
 			/* Create SQL statement */
-			sql = "DELETE * from TRABAJADOR WHERE NOMBRE_TRABAJADOR = " + nombreEliminar;
+			char sql[] = "DELETE from TRABAJADOR WHERE NOMBRE_TRABAJADOR = '";
+
+			strcat(sql,nom);
+
+			char fr2[] = "'";
+
+			strcat(sql,fr2);
+
 			/* Execute SQL statement */
 			rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
 			if( rc != SQLITE_OK ) {
@@ -885,8 +985,9 @@ void clienteCaso1(){
 }
 void clienteCaso2(){
 	 //Accedemos al usuario
-				ifstream ifs;
+	ifstream ifs;
 				ifs.open("usuarios.txt", ios::in);
+				string nom, cont, nomAu, conAu;
 				bool en = false;
 				cout << "Ingrese el nombre del usuario: " << endl;
 				cin >> nomAu;
@@ -894,28 +995,28 @@ void clienteCaso2(){
 				cin >> conAu;
 				ifs >> nom;
 				while (!ifs.eof() && !en) {
-					ifs>>com;
-					if(nom == nomAu && com == conAu){
-					cout<<"Usuario y contrasenya correctos. Bienvenido " << nomAu <<endl;
-					/*cout<<"Nombre introducido: " <<nomAu<<endl; estas cuatro lineas son para compobar datos
-					cout<<"nombre del txt: " << nom<<endl; //nombre encontrado en el txt
-					cout<<"Contra introducida: "<<conAu<<endl;
-					cout<<"contra del txt: " <<con<<endl;  //contra encontrada en el txt*/
-					en = true;
-					//parte del usuario
-					cout<<"---MODO USUARIO---"<<endl;
-					clienteMenu();
+					ifs>>cont;
+					if(nom == nomAu && cont == conAu){
+						cout<<"Usuario y contraseña correctos. Bienvenido " << nomAu <<endl;
+						en = true;
+						//parte del usuario
+						cout<<"---MODO USUARIO---"<<endl;
+						clienteMenu();
 					}
-					else{
-						cout<<"usuario o contrasenya incorrectos."<<endl;
+
+					if(nom == nomAu && cont != conAu || nom != nomAu && cont == conAu) {
+						cout<<"El usuario y/o la contraseña son incorrectos"<<endl;
 						clienteCaso2();
 					}
 					ifs>>nom;
-					}ifs.close();
-					if(!en){
-						cout<<"usuario NO encontrado"<<endl;
-						cliente();
-					}
+				}
+				ifs.close();
+
+				if(!en){
+					cout<<"Usuario NO encontrado"<<endl;
+					cliente();
+				}
+
 }
 void cliente(){
 	do{
