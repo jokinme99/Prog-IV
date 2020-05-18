@@ -1308,6 +1308,48 @@ int main() {
 
 void menuReserva()
 {
+	char usuarioReserva[15];
+	int seleccion;
+	int seleccionDia;
+	int seleccionHora;
+	do
+	{
+	system("cls");
+	cout<<"Escriba su usuario para realizar la reserva:"<<endl;
+	cin >> usuarioReserva;
+	cout<<"En que restaurante desea hacer la reserva:"<<endl<<endl;
+	cout<<"1.LaTabernaDeSanti"<< endl;
+	cout<<"2.JosebarenEtxea"<< endl;
+	cout<<"3.HerriHarmaila"<< endl;
+	cout<<"4.Josefa"<< endl;
+	cout<<"5.Atras"<< endl;
+
+	cin >> seleccion;
+
+	}while(seleccion < 1 || seleccion > 5);
+
+	if(seleccion == 5)
+	{
+	clienteMenu();
+	}else
+	{
+
+	do
+	{
+	cout<<"Que dia desea hacer la reserva?"<<endl;
+	cin<<seleccionDia;
+	}while(seleccionDia < 1 || seleccionDia > 31);
+
+	}
+	do
+	{
+	cout<<"Seleccione la hora:"<<endl<<endl;
+	cout<<"1.13:00"<<endl;
+	cout<<"2.14:00"<<endl;
+	cin<<seleccionHora;
+	}while(seleccionHora < 1 || seleccionHora > 2);
+
+
 
 };
 
