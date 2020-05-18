@@ -56,6 +56,10 @@ void clienteMenu();
 void clienteCaso1();
 void clienteCaso2();
 void cliente();
+void menuReserva();
+
+
+
 
 static int callback(void *data, int argc, char **argv, char **azColName) {
 	int i;
@@ -1160,7 +1164,7 @@ void admin() {
 }
 void clienteMenu() {
 	do {
-		cout << "1. Opcion 1" << endl;
+		cout << "1. Crear Reserva" << endl;
 		cout << "2. Opcion 2" << endl;
 		cout << "3. Opcion 3" << endl;
 		cout << "4. Opcion 4" << endl;
@@ -1171,7 +1175,7 @@ void clienteMenu() {
 			&& opcionClienteMenu != 5);
 	switch (opcionClienteMenu) {
 	case 1: {
-		cout << "opcion 1" << endl;
+		menuReserva();
 	}
 		break;
 	case 2: {
@@ -1301,4 +1305,20 @@ void inicio() {
 int main() {
 	inicio();
 }
+
+void menuReserva()
+{
+
+};
+
+
+
+
+
+
+
+
+
+
+
 
