@@ -1339,7 +1339,7 @@ int menuReserva()
 	do
 	{
 	cout<<"Que dia desea hacer la reserva?"<<endl;
-	cin<<seleccionDia;
+	cin >> seleccionDia;
 	}while(seleccionDia < 1 || seleccionDia > 31);
 
 	}
@@ -1348,7 +1348,7 @@ int menuReserva()
 	cout<<"Seleccione la hora:"<<endl<<endl;
 	cout<<"1.13:00"<<endl;
 	cout<<"2.14:00"<<endl;
-	cin<<seleccionHora;
+	cin >> seleccionHora;
 	}while(seleccionHora < 1 || seleccionHora > 2);
 
 	sqlite3 *db;
