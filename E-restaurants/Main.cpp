@@ -1310,7 +1310,7 @@ int main() {
 
 int menuReserva()
 {
-	char usuarioReserva[15];
+	char usuarioReserva[20];
 	int seleccion;
 	int seleccionDia;
 	int seleccionHora;
