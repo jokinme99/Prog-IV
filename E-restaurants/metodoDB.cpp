@@ -10,6 +10,7 @@
 #include "sqlite3.h"
 #include <stdlib.h>
 #include <string.h>
+#include"metodoDB.h"
 using namespace std;
 
 int crearReserva(sqlite3 *db, char usuario[20], int restaurante, int dia,
