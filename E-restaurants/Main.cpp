@@ -1357,7 +1357,7 @@ int menuReserva()
 		}
 
 		//sale error por que clipse no reconoce la libreria sqlite3 bien, esta bien.
-		rc = crearReserva(db,usuarioReserva,seleccionDia,seleccionHora);
+		rc = crearReserva(db,usuarioReserva,seleccion,seleccionDia,seleccionHora);
 
 
 	return 0;
