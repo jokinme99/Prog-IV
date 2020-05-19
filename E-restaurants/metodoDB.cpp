@@ -4,7 +4,7 @@
  *  Created on: 18 may. 2020
  *      Author: AITOR
  */
-
+/*
 #include "Reserva.h"
 #include <iostream>
 #include "sqlite3.h"
@@ -41,7 +41,7 @@ int crearReserva(sqlite3 *db, char usuario[20], int restaurante, int dia,
 		return rc;
 	}
 
-	/* Execute SQL statement */
+	/* Execute SQL statement
 
 	do {
 		rc = sqlite3_step(stmt);
@@ -91,7 +91,7 @@ int crearReserva(sqlite3 *db, char usuario[20], int restaurante, int dia,
 		return rc;
 	}
 
-	/* Execute SQL statement */
+	/* Execute SQL statement
 
 	do {
 		rc = sqlite3_step(stmt2);
@@ -116,3 +116,4 @@ int crearReserva(sqlite3 *db, char usuario[20], int restaurante, int dia,
 
 }
 
+*/

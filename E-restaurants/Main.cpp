@@ -20,7 +20,7 @@
 #include "sqlite3.h"
 #define USUARIO "usuario"
 #define CONTRA "usuario"
-#include "metodoDB.h"
+//#include "metodoDB.h"
 
 using namespace std;
 int salir, opcionAdmin, opcionUsuario, op;
@@ -58,7 +58,7 @@ void clienteMenu();
 void clienteCaso1();
 void clienteCaso2();
 void cliente();
-int menuReserva();
+//int menuReserva();
 
 
 
@@ -470,15 +470,37 @@ void adminMenu3() {
 	rc = sqlite3_open("e-restaurants.db", &db);
 	switch (opcionAdminMenu3) {
 	case 1: {
+		//no ejecuta bien pero la sentencia te la rea bien!
+		char n_re[100], nu_me[100];
 		cout << "Ingrese el nombre del restaurante que desea modificar" << endl;
-		cin >> nomMod;
+		cin >> n_re;
 		cout << endl;
 		cout << "Ingrese la cantidad de mensas que desea modificar" << endl;
-		cin >> canMesas;
+		cin >> nu_me;
 		cout << endl;
 
 		/* Create SQL statement */
-		//sql = "UPDATE RESTAURANTE set NUM_MESAS = " + canMesas + "WHERE NOMBRE_RESTAURANTE = " + nomMod;
+		char sql[] = "UPDATE RESTAURANTE set NUM_MESAS = ";// + canMesas + "WHERE NOMBRE_RESTAURANTE = " + nomMod;
+		char fra[] = "WHERE NOMBRE_RESTAURANTE = '";
+
+		char con1[] = "'", con2[] = "'" , con3[] = ")", con4[] ="", con5[]="'", con6[]="'", con7[] ="'", con8[]=" ";
+
+		strcat(sql, nu_me);
+		//strcat(sql, con1);
+		//strcat(sql, con5);
+		strcat(sql, con8);
+		strcat(sql, fra);
+		strcat(sql, n_re);
+		strcat(sql, con2);
+		/*strcat(sql, con7);
+		strcat(sql, con3);*/
+		//strcat(sql, con4);
+
+
+
+
+
+
 		/* Execute SQL statement */
 		rc = sqlite3_exec(db, sql, callback, (void*) data, &zErrMsg);
 		if (rc != SQLITE_OK) {
@@ -492,15 +514,34 @@ void adminMenu3() {
 	}
 		break;
 	case 2: {
+		//bien!
+		char numero_m[100], prec_m[100];
 		cout << "Ingrese el numero del menu que desea modificar" << endl;
-		cin >> canMesas;
+		cin >> numero_m;
 		cout << endl;
 		cout << "Ingrese el precio del menu que desea modificar" << endl;
-		cin >> dinero;
+		cin >> prec_m;
 		cout << endl;
 
 		/* Create SQL statement */
-		//sql = "UPDATE MENU set PRECIO_MENU = " + dinero + "WHERE ID_MENU = " + canMesas;
+
+		char sql[] = "UPDATE MENU set PRECIO_MENU = ";
+		char fra[] = "WHERE ID_MENU = ";
+
+
+		char con1[] = "'", con2[] = "'" , con3[] = ")", con4[] ="", con5[]="'", con6[]="'", con7[] ="'", con8[]=" ";
+		strcat(sql, prec_m);
+		//strcat(sql, con1);
+		//strcat(sql, con5);
+		strcat(sql, con8);
+		strcat(sql, fra);
+		strcat(sql, numero_m);
+		//strcat(sql, con2);
+		/*strcat(sql, con7);
+		strcat(sql, con3);*/
+		strcat(sql, con4);
+
+
 		/* Execute SQL statement */
 		rc = sqlite3_exec(db, sql, callback, (void*) data, &zErrMsg);
 		if (rc != SQLITE_OK) {
@@ -514,15 +555,37 @@ void adminMenu3() {
 	}
 		break;
 	case 3: {
+		////no ejecuta bien pero la sentencia te la rea bien!
+		char nom_trab[100], suel_trab[100];
 		cout << "Ingrese el nombre del trabajador que desea modificar" << endl;
-		cin >> nomMod;
+		cin >> nom_trab;
 		cout << endl;
 		cout << "Ingrese el sueldo del trabajador que desea modificar" << endl;
-		cin >> dinero;
+		cin >> suel_trab;
 		cout << endl;
 
 		/* Create SQL statement */
-		//sql = "UPDATE TRABAJADOR set SUELDO = " + dinero + "WHERE NOMBRE_TRABAJADOR = " + nomMod;
+
+		char sql[] = "UPDATE TRABAJADOR set SUELDO = ";
+		char fra[] = "WHERE ID_TRABAJADOR = ";
+
+
+		char con1[] = "'", con2[] = "'" , con3[] = ")", con4[] ="", con5[]="'", con6[]="'", con7[] ="'", con8[]=" ";
+
+		strcat(sql, suel_trab);
+		//strcat(sql, con1);
+		//strcat(sql, con5);
+		strcat(sql, con8);
+		strcat(sql, fra);
+		strcat(sql, nom_trab);
+		//strcat(sql, con2);
+		/*strcat(sql, con7);
+		strcat(sql, con3);*/
+		strcat(sql, con4);
+
+
+
+
 		/* Execute SQL statement */
 		rc = sqlite3_exec(db, sql, callback, (void*) data, &zErrMsg);
 		if (rc != SQLITE_OK) {
@@ -536,15 +599,35 @@ void adminMenu3() {
 	}
 		break;
 	case 4: {
+		//bien!!!
+		char nom_prod[100], prec_prod[100];
 		cout << "Ingrese el nombre del producto que desea modificar" << endl;
-		cin >> nomMod;
+		cin >> nom_prod;
 		cout << endl;
 		cout << "Ingrese el precio del producto que desea modificar" << endl;
-		cin >> dinero;
+		cin >> prec_prod;
 		cout << endl;
 
 		/* Create SQL statement */
-		//sql = "UPDATE PRODUCTO set PRECIO = " + dinero + "WHERE NOMBRE_TRABAJADOR = " + nomMod;
+
+
+		char sql[] = "UPDATE PRODUCTO set PRECIO = ";
+		char fra[] = "WHERE NOMBRE_PRODUCTO = '";
+
+
+		char con1[] = "'", con2[] = "'" , con3[] = ")", con4[] ="", con5[]="'", con6[]="'", con7[] ="'", con8[]=" ";
+		strcat(sql, prec_prod);
+		//strcat(sql, con1);
+		//strcat(sql, con5);
+		strcat(sql, con8);
+		strcat(sql, fra);
+		strcat(sql, nom_prod);
+		strcat(sql, con2);
+		/*strcat(sql, con7);
+		strcat(sql, con3);*/
+		strcat(sql, con4);
+
+
 		/* Execute SQL statement */
 		rc = sqlite3_exec(db, sql, callback, (void*) data, &zErrMsg);
 		if (rc != SQLITE_OK) {
@@ -1177,7 +1260,7 @@ void clienteMenu() {
 			&& opcionClienteMenu != 5);
 	switch (opcionClienteMenu) {
 	case 1: {
-		menuReserva();
+		//	menuReserva();
 	}
 		break;
 	case 2: {
@@ -1308,7 +1391,7 @@ int main() {
 	inicio();
 }
 
-int menuReserva()
+/*nt menuReserva()
 {
 	char usuarioReserva[20];
 	int seleccion;
@@ -1351,8 +1434,8 @@ int menuReserva()
 	cin >> seleccionHora;
 	}while(seleccionHora < 1 || seleccionHora > 2);
 
-	sqlite3 *db;
-		int rc = sqlite3_open("e-restaurants.db", &db);	//abrir base de datos
+
+		rc = sqlite3_open("e-restaurants.db", &db);	//abrir base de datos
 		if (rc != SQLITE_OK) {
 			cout << "Error opening database" << endl;
 			return rc;
@@ -1365,7 +1448,7 @@ int menuReserva()
 	return 0;
 
 };
-
+*/
 
 
 
