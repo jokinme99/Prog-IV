@@ -8,7 +8,7 @@
 #ifndef METODODB_H_
 #define METODODB_H_
 
-int crearReserva(sqlite3 *db, char usuario, int restaurante, int dia, int hora);
+int crearReserva(sqlite3 *db, char usuario[20], int restaurante, int dia, int hora);
 
 
 
