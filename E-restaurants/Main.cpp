@@ -20,6 +20,8 @@
 #include "sqlite3.h"
 #define USUARIO "usuario"
 #define CONTRA "usuario"
+#include "metodoDB.h"
+
 using namespace std;
 int salir, opcionAdmin, opcionUsuario, op;
 string nombreAdmin;
