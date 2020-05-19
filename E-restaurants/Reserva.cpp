@@ -18,7 +18,7 @@ Reserva::Reserva()
 
 }
 
-Reserva::Reserva(const int idReserva, int hora, int dia, int numMesa)
+Reserva::Reserva(const int idReserva, int hora, int dia, int numMesa, char* usuario)
 {
 	this->idReserva = idReserva;
 	this->hora = hora;
