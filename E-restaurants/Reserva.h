@@ -16,7 +16,7 @@ class Reserva
 		int hora;
 		int dia;
 		int numMesa;
-		char* usuario[20];
+		char* usuario;
 
 	public:
 
