@@ -18,7 +18,7 @@ int crearReserva(sqlite3 *db, char usuario[20], int restaurante, int dia,
 
 	Reserva r;
 	int numMesa;
-	char nomRestaurante;
+	char nomRestaurante [20];
 	int idMesa;
 
 	sqlite3_stmt *stmt;	//crear stmt
