@@ -4,7 +4,7 @@
  *  Created on: 18 may. 2020
  *      Author: AITOR
  */
-/*
+
 #include "Reserva.h"
 #include <iostream>
 #include "sqlite3.h"
@@ -12,6 +12,7 @@
 #include <string.h>
 #include"metodoDB.h"
 using namespace std;
+
 
 int crearReserva(sqlite3 *db, char usuario[20], int restaurante, int dia,
 		int hora) {
@@ -28,7 +29,7 @@ int crearReserva(sqlite3 *db, char usuario[20], int restaurante, int dia,
 
 	int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 	if (rc != SQLITE_OK) {
-		cout << "Error preparing statement (SELECT)" << endl;
+		cout << "Error al hacer la sentencia (SELECT)" << endl;
 		return rc;
 	}
 
@@ -41,14 +42,14 @@ int crearReserva(sqlite3 *db, char usuario[20], int restaurante, int dia,
 		return rc;
 	}
 
-	/* Execute SQL statement
+	 //Execute SQL statement
 
 	do {
 		rc = sqlite3_step(stmt);
 		if (rc == SQLITE_ROW) {
 			strcpy(nomRestaurante, (char*) sqlite3_column_text(stmt, 0));
-			numMesa = sqlite3_colum_int(stmt, 1);
-			idMesa = sqlite3_colum_int(stmt, 2);
+			numMesa = sqlite3_column_int(stmt, 1);
+			idMesa = sqlite3_column_int(stmt, 2);
 			r.setDia(dia);
 			r.setHora(hora);
 			r.setNumMesa(numMesa);
@@ -66,16 +67,16 @@ int crearReserva(sqlite3 *db, char usuario[20], int restaurante, int dia,
 
 	cout<<"Select realizado con exito"<<endl;
 
-	return SQLITE_OK;
 
 	sqlite3_stmt *stmt2;	//crear stmt
 
 	char sql2[] =
 			"INSERT INTO RESERVA (HORA, DIA, ID_MESA, USUARIO, NUMERO_MESA) VALUES (?, ?, ?, ?, ?) ";
 
-	int rc = sqlite3_prepare_v2(db, sql2, -1, &stmt2, NULL);
+	rc = sqlite3_prepare_v2(db, sql2, -1, &stmt2, NULL);
 	if (rc != SQLITE_OK) {
-		cout << "Error preparing statement (INSERT)" << endl;
+		cout << "Error al hacer la sentencia (INSERT)" << endl;
+		printf("%s\n", sqlite3_errmsg(db));
 		return rc;
 	}
 
@@ -91,29 +92,73 @@ int crearReserva(sqlite3 *db, char usuario[20], int restaurante, int dia,
 		return rc;
 	}
 
-	/* Execute SQL statement
+	 //Execute SQL statement
 
-	do {
+
 		rc = sqlite3_step(stmt2);
-		if (rc == SQLITE_ROW) {
+		if (rc == SQLITE_DONE) {
 
 		}
-	} while (rc == SQLITE_ROW);
+
 
 	rc = sqlite3_finalize(stmt2);
 	if (rc != SQLITE_OK) {
 		cout << "Error al finalizar la consulta(INSERT)" << endl;
+		printf("%s\n", sqlite3_errmsg(db));
 
 		return rc;
 	}
+	//trabajando en ello
 
+	sqlite3_stmt *stmt3;	//crear stmt
+
+		char sql3[] =
+				"UPDATE MESA SET MESA_OCUPADA = '1' WHERE ID_MESA = ?";
+
+		rc = sqlite3_prepare_v2(db, sql3, -1, &stmt3, NULL);
+		if (rc != SQLITE_OK) {
+			cout << "Error preparing statement (UPDATE)" << endl;
+			printf("%s\n", sqlite3_errmsg(db));
+			return rc;
+		}
+
+		rc = sqlite3_bind_int(stmt3, 1, idMesa);
+		if (rc != SQLITE_OK) {
+			cout << "Error al bindear la consulta(UPDATE)" << endl;
+			cout << sqlite3_errmsg(db) << endl;
+
+			return rc;
+		}
+
+		 //Execute SQL statement
+
+
+			rc = sqlite3_step(stmt3);
+			if (rc == SQLITE_DONE) {
+
+			}
+
+
+		rc = sqlite3_finalize(stmt3);
+		if (rc != SQLITE_OK) {
+			cout << "Error al finalizar la consulta(UPDATE)" << endl;
+			printf("%s\n", sqlite3_errmsg(db));
+
+			return rc;
+		}
+
+
+	//trabajando en ello
 	cout<<"Insert realizado con exito"<<endl;
 
 	cout<<"Su reserva se ha realizado con exito"<<endl;
 	cout<<"Los datos de la reserva son los siguientes:"<<endl;
-	cout<<"Restaurante: "<<nomRestaurante<<" Dia: "<<r.getDia<<" Hora: "<<r.getHora<<" Mesa: "<<r.getNumMesa<<endl;
+	cout<<"Restaurante: "<<nomRestaurante<<" Dia: "<<r.getDia()<<" Hora: "<<r.getHora()<<" Mesa: "<<numMesa<<endl;
+
+	system("PAUSE");
+
 	return SQLITE_OK;
 
 }
 
-*/
+

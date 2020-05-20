@@ -18,9 +18,10 @@
 #include <windows.h>
 #include "Reserva.h"
 #include "sqlite3.h"
+#include "metodoDB.h"
 #define USUARIO "usuario"
 #define CONTRA "usuario"
-//#include "metodoDB.h"
+
 
 using namespace std;
 int salir, opcionAdmin, opcionUsuario, op;
@@ -58,7 +59,7 @@ void clienteMenu();
 void clienteCaso1();
 void clienteCaso2();
 void cliente();
-//int menuReserva();
+int menuReserva();
 
 
 
@@ -672,7 +673,7 @@ void adminMenu4() {
 	rc = sqlite3_open("e-restaurants.db", &db);
 	switch (opcionAdminMenu4) {
 	case 1: {
-		char id_res[100], nom_res[100], dir_res[100], tipo_com[100],
+		char id_res[100], nom_res[100], dir_res[100], tipo_com[100], //a
 				tel_res[100], num_mesas[100];
 		cout << "Ingrese el id del restaurante que desea anyadir: ";
 		cin >> id_res;
@@ -1260,7 +1261,7 @@ void clienteMenu() {
 			&& opcionClienteMenu != 5);
 	switch (opcionClienteMenu) {
 	case 1: {
-		//	menuReserva();
+			menuReserva();
 	}
 		break;
 	case 2: {
@@ -1391,7 +1392,7 @@ int main() {
 	inicio();
 }
 
-/*nt menuReserva()
+int menuReserva()
 {
 	char usuarioReserva[20];
 	int seleccion;
@@ -1443,12 +1444,19 @@ int main() {
 
 		//sale error por que clipse no reconoce la libreria sqlite3 bien, esta bien. //solucionado
 		rc = crearReserva(db,usuarioReserva,seleccion,seleccionDia,seleccionHora);
+		rc = sqlite3_close(db);
+		    if (rc != SQLITE_OK) {
+		        printf("Error closing database\n");
+		        printf("%s\n", sqlite3_errmsg(db));
+		        return rc;
+		    }
+		clienteMenu();
 
 
 	return 0;
 
 };
-*/
+
 
 
 
