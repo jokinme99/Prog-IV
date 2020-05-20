@@ -1323,7 +1323,7 @@ void clienteCaso2() {
 			clienteMenu();
 		}
 
-		else {
+		if (nom == nomAu && cont != conAu || nom != nomAu && cont == conAu) {
 			cout << "El usuario y/o la contraseña son incorrectos" << endl;
 			clienteCaso2();
 		}
