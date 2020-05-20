@@ -17,8 +17,9 @@
 #include <stdio.h>
 #include <windows.h>
 #include "Reserva.h"
-#include "sqlite3.h"
 #include "metodoDB.h"
+#include <sqlite3.h>
+#include "sqlite3.h"
 #define USUARIO "usuario"
 #define CONTRA "usuario"
 
@@ -1322,7 +1323,7 @@ void clienteCaso2() {
 			clienteMenu();
 		}
 
-		if (nom == nomAu && cont != conAu || nom != nomAu && cont == conAu) {
+		else {
 			cout << "El usuario y/o la contraseña son incorrectos" << endl;
 			clienteCaso2();
 		}

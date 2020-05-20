@@ -14,7 +14,7 @@ Reserva::Reserva()
 	this->hora = 00;
 	this->dia = 0;
 	this->numMesa = 0;
-	this->usuario = "\0";
+	this->usuario = NULL;
 
 }
 

@@ -7,9 +7,11 @@
 
 #include "Reserva.h"
 #include <iostream>
+#include <sqlite3.h>
 #include "sqlite3.h"
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
 #include"metodoDB.h"
 using namespace std;
 

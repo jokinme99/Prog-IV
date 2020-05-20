@@ -5,6 +5,8 @@
  *      Author: AITOR
  */
 
+#include <sqlite3.h>
+#include "sqlite3.h"
 #ifndef METODODB_H_
 #define METODODB_H_
 
