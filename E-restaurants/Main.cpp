@@ -1401,7 +1401,7 @@ int menuReserva()
 	int seleccionHora;
 	do
 	{
-	system("cls");
+
 	cout<<"Escriba su usuario para realizar la reserva:"<<endl;
 	cin >> usuarioReserva;
 	cout<<"En que restaurante desea hacer la reserva:"<<endl<<endl;

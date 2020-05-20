@@ -157,7 +157,7 @@ int crearReserva(sqlite3 *db, char usuario[20], int restaurante, int dia,
 	cout<<"Los datos de la reserva son los siguientes:"<<endl;
 	cout<<"Restaurante: "<<nomRestaurante<<" Dia: "<<r.getDia()<<" Hora: "<<r.getHora()<<" Mesa: "<<numMesa<<endl;
 
-	system("PAUSE");
+
 
 	return SQLITE_OK;
 
