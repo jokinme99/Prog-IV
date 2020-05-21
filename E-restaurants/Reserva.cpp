@@ -7,6 +7,7 @@
 #include "Reserva.h"
 #include <stdlib.h>
 #include <iostream>
+#include <sqlite3.h>
 
 Reserva::Reserva()
 {

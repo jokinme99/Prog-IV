@@ -18,8 +18,8 @@
 #include <windows.h>
 #include "Reserva.h"
 #include "metodoDB.h"
-#include <sqlite3.h>
 #include "sqlite3.h"
+#include <sqlite3.h>
 #define USUARIO "usuario"
 #define CONTRA "usuario"
 
@@ -61,10 +61,10 @@ void clienteCaso1();
 void clienteCaso2();
 void cliente();
 int menuReserva();
-void pruebaExamen();
 
-
-
+int seleccionarReserva();
+int menuModificar();
+int menuEliminar();
 
 static int callback(void *data, int argc, char **argv, char **azColName) {
 	int i;
@@ -1219,7 +1219,7 @@ void adminCaso2() {
 	} else {
 		cout << "El nombre o la contra introduccidos son incorrectos" << endl;
 		//adminCaso2();//Para introducir otra vez
-		adminCaso2();
+		admin();
 	}
 }
 void admin() {
@@ -1253,10 +1253,9 @@ void admin() {
 void clienteMenu() {
 	do {
 		cout << "1. Crear Reserva" << endl;
-		cout << "2. Opcion 2" << endl;
-		cout << "3. Opcion 3" << endl;
-		cout << "4. Opcion 4" << endl;
-		cout << "5. Cerrar sesion" << endl;
+		cout << "2. Modificar Reserva" << endl;
+		cout << "3. Eliminar Reserva" << endl;
+		cout << "4. Cerrar sesion" << endl;
 		cin >> opcionClienteMenu;
 	} while (opcionClienteMenu != 1 && opcionClienteMenu != 2
 			&& opcionClienteMenu != 3 && opcionClienteMenu != 4
@@ -1267,20 +1266,17 @@ void clienteMenu() {
 	}
 		break;
 	case 2: {
-		cout << "opcion 2" << endl;
+		menuModificar();
 	}
 		break;
 	case 3: {
-		cout << "opcion 3" << endl;
+		menuEliminar();
 	}
 		break;
 	case 4: {
-		cout << "opcion 4" << endl;
-	}
-		break;
-	case 5: {
 		cliente();
-	}
+			}
+
 		break;
 	default: {
 		cout << "Introduzca un valor correcto";
@@ -1324,7 +1320,7 @@ void clienteCaso2() {
 			clienteMenu();
 		}
 
-		else {
+		else if (nom == nomAu && cont != conAu || nom != nomAu && cont == conAu) {
 			cout << "El usuario y/o la contraseña son incorrectos" << endl;
 			clienteCaso2();
 		}
@@ -1360,10 +1356,6 @@ void cliente() {
 		break;
 	}
 }
-//void pruebaExamen(){
-//	cout<<"Hola Mundo"<<endl;
-//	inicio();
-//}
 void inicio() {
 	int opcion;
 	do {
@@ -1461,6 +1453,57 @@ int menuReserva()
 	return 0;
 
 };
+
+int menuModificar()
+{
+	char usuarioSeleccionReserva[20];
+	cout<<"Introduzca su nombre de usuario para realizar la modificacion:"<<endl;
+	cin >> usuarioSeleccionReserva;
+
+	rc = sqlite3_open("e-restaurants.db", &db);	//abrir base de datos
+	if (rc != SQLITE_OK) {
+		cout << "Error opening database" << endl;
+		return rc;
+	}
+
+	rc = seleccionarReserva(db, usuarioSeleccionReserva);
+			rc = sqlite3_close(db);
+			    if (rc != SQLITE_OK) {
+			        printf("Error closing database\n");
+			        printf("%s\n", sqlite3_errmsg(db));
+			        return rc;
+			    }
+		clienteMenu();
+
+
+
+
+	return 0;
+};
+
+int menuEliminar()
+{
+	char usuarioSeleccionReserva2[20];
+	cout<<"Introduzca su nombre de usuario para eliminar una reserva"<<endl;
+	cin >> usuarioSeleccionReserva2;
+
+	rc = sqlite3_open("e-restaurants.db", &db);	//abrir base de datos
+		if (rc != SQLITE_OK) {
+			cout << "Error opening database" << endl;
+			return rc;
+		}
+
+		rc = eliminarReserva(db, usuarioSeleccionReserva2);
+				rc = sqlite3_close(db);
+				    if (rc != SQLITE_OK) {
+				        printf("Error closing database\n");
+				        printf("%s\n", sqlite3_errmsg(db));
+				        return rc;
+				    }
+
+	clienteMenu();
+	return 0;
+}
 
 
 
