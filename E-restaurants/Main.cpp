@@ -61,6 +61,7 @@ void clienteCaso1();
 void clienteCaso2();
 void cliente();
 int menuReserva();
+void pruebaExamen();
 
 
 
@@ -1359,7 +1360,10 @@ void cliente() {
 		break;
 	}
 }
-
+//void pruebaExamen(){
+//	cout<<"Hola Mundo"<<endl;
+//	inicio();
+//}
 void inicio() {
 	int opcion;
 	do {
